@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		1612324224069A33003A87E3 /* RNTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RNTrtc.m */; platformFilter = ios; };
 		16BF441B2404FC8100CFCCFE /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */; platformFilter = ios; };
-		16F9163B240419D10096DC7E /* RNTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */; platformFilter = ios; };
-		16F9163C24041DF20096DC7E /* RNTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F91637240418430096DC7E /* RNTXCloudVideoView.m */; platformFilter = ios; };
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; platformFilter = ios; };
 		29D5048E24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */; platformFilter = ios; };
 		29D5048F243913510032E4B7 /* TXLiveBase.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FA24076B1E004D9546 /* TXLiveBase.h */; platformFilter = ios; };
@@ -71,10 +69,6 @@
 		16D2310A24076B1E004D9546 /* TXVideoCustomProcessDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXVideoCustomProcessDelegate.h; sourceTree = "<group>"; };
 		16D2310B24076B1E004D9546 /* TXLiveRecordTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveRecordTypeDef.h; sourceTree = "<group>"; };
 		16D2310C24076B1E004D9546 /* TXLiveAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveAudioSessionDelegate.h; sourceTree = "<group>"; };
-		16F91637240418430096DC7E /* RNTXCloudVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoView.m; sourceTree = "<group>"; };
-		16F91638240418710096DC7E /* RNTXCloudVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoView.h; sourceTree = "<group>"; };
-		16F91639240419920096DC7E /* RNTXCloudVideoViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoViewManager.h; sourceTree = "<group>"; };
-		16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoViewManager.m; sourceTree = "<group>"; };
 		16F9163D24041F170096DC7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTrtc.h; sourceTree = "<group>"; };
@@ -142,10 +136,6 @@
 				16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */,
 				16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */,
 				16BF44192404FC6500CFCCFE /* GenerateSigHelper.h */,
-				16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */,
-				16F91639240419920096DC7E /* RNTXCloudVideoViewManager.h */,
-				16F91638240418710096DC7E /* RNTXCloudVideoView.h */,
-				16F91637240418430096DC7E /* RNTXCloudVideoView.m */,
 				B3E7B5881CC2AC0600A0062D /* RNTrtc.h */,
 				1612324124069A32003A87E3 /* RNTrtc.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -231,8 +221,6 @@
 				29D504A1243913510032E4B7 /* TXLiveAudioSessionDelegate.h in Sources */,
 				1612324224069A33003A87E3 /* RNTrtc.m in Sources */,
 				16BF441B2404FC8100CFCCFE /* GenerateSigHelper.m in Sources */,
-				16F9163C24041DF20096DC7E /* RNTXCloudVideoView.m in Sources */,
-				16F9163B240419D10096DC7E /* RNTXCloudVideoViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
