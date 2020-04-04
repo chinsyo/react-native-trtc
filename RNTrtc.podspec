@@ -9,7 +9,6 @@ Pod::Spec.new do |s|
 
   s.homepage     = package['homepage']
   s.license      = package['license']
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
   s.author       = package['author']
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/chinsyo/react-native-trtc.git", :tag => "v#{s.version}" }
