@@ -761,11 +761,11 @@ public class RNTrtcModule extends ReactContextBaseJavaModule implements Lifecycl
          * @param errMsg
          */
         @Override
-        public void onDisconnectOtherRoom(final int errCode, final String errMsg) {
+        public void onDisConnectOtherRoom(final int errCode, final String errMsg) {
             WritableMap params = Arguments.createMap();
             params.putInt("errCode", errCode);
             params.putString("errMsg", errMsg);
-            sendEvent(reactContext, "onDisconnectOtherRoom", params);
+            sendEvent(reactContext, "onDisConnectOtherRoom", params);
         }
 
         @Override
