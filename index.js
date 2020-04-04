@@ -255,6 +255,10 @@ export default {
     stopScreenRecord() {
         RNModule.stopScreenRecord()
     },
+
+    getSDKVersion() {
+        return RNModule.getSDKVersion();
+    },
     /*
      * setAudioRoute
      * int  0 Speaker 1 Earpiece
