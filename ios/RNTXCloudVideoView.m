@@ -30,23 +30,23 @@
 }
 
 - (void)start {
-    if (_trtc) {
-        if ([_userId isEqualToString: [RNTrtc getSelfUserId]]) {
-            [_trtc setLocalViewFillMode:TRTCVideoFillMode_Fill];
-            [_trtc startLocalPreview:[RNTrtc isFrontCamera] view:self];
+    if (self.trtc) {
+        if ([self.userId isEqualToString: [RNTrtc getSelfUserId]]) {
+            [self.trtc setLocalViewFillMode:TRTCVideoFillMode_Fill];
+            [self.trtc startLocalPreview:[RNTrtc isFrontCamera] view:self];
         } else {
-            [_trtc setRemoteViewFillMode:_userId mode:TRTCVideoFillMode_Fill];
-            [_trtc startRemoteView:_userId view:self];
+            [self.trtc setRemoteViewFillMode:_userId mode:TRTCVideoFillMode_Fill];
+            [self.trtc startRemoteView:_userId view:self];
         }
     }
 }
 
 - (void)stop {
-    if (_trtc) {
-        if ([_userId isEqualToString:[RNTrtc getSelfUserId] ]) {
+    if (self.trtc) {
+        if ([self.userId isEqualToString:[RNTrtc getSelfUserId] ]) {
            // [_trtc stopLocalPreview ];
         } else {
-            [_trtc stopRemoteView:_userId ];
+            [self.trtc stopRemoteView:_userId ];
         }
     }
 }
