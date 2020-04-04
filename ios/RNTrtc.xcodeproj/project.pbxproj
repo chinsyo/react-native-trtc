@@ -1,0 +1,356 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1612324224069A33003A87E3 /* RNTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RNTrtc.m */; };
+		16BF441B2404FC8100CFCCFE /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */; };
+		16D2310D24076B1E004D9546 /* TXLiteAVSDK_TRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D230F924076B1E004D9546 /* TXLiteAVSDK_TRTC.a */; };
+		16F9163B240419D10096DC7E /* RNTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */; };
+		16F9163C24041DF20096DC7E /* RNTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F91637240418430096DC7E /* RNTXCloudVideoView.m */; };
+		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58B511D91A9E6C8500147676 /* Copy Files */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Copy Files";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		134814201AA4EA6300B7C361 /* libRNTrtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTrtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1612324124069A32003A87E3 /* RNTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTrtc.m; sourceTree = "<group>"; };
+		16BF44192404FC6500CFCCFE /* GenerateSigHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateSigHelper.h; sourceTree = "<group>"; };
+		16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateSigHelper.m; sourceTree = "<group>"; };
+		16D230F924076B1E004D9546 /* TXLiteAVSDK_TRTC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC.a; sourceTree = "<group>"; };
+		16D230FA24076B1E004D9546 /* TXLiveBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveBase.h; sourceTree = "<group>"; };
+		16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveSDKEventDef.h; sourceTree = "<group>"; };
+		16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveRecordListener.h; sourceTree = "<group>"; };
+		16D230FD24076B1E004D9546 /* TRTCCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCloud.h; sourceTree = "<group>"; };
+		16D230FE24076B1E004D9546 /* TRTCCloudDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCloudDef.h; sourceTree = "<group>"; };
+		16D230FF24076B1E004D9546 /* TXLivePlayConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLivePlayConfig.h; sourceTree = "<group>"; };
+		16D2310024076B1E004D9546 /* TXLiveSDKTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveSDKTypeDef.h; sourceTree = "<group>"; };
+		16D2310124076B1E004D9546 /* TRTCCloudDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCloudDelegate.h; sourceTree = "<group>"; };
+		16D2310224076B1E004D9546 /* TXLiteAVSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiteAVSDK.h; sourceTree = "<group>"; };
+		16D2310324076B1E004D9546 /* TXAudioCustomProcessDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXAudioCustomProcessDelegate.h; sourceTree = "<group>"; };
+		16D2310424076B1E004D9546 /* TXLivePlayListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLivePlayListener.h; sourceTree = "<group>"; };
+		16D2310524076B1E004D9546 /* TXLiteAVCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiteAVCode.h; sourceTree = "<group>"; };
+		16D2310624076B1E004D9546 /* TXBeautyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXBeautyManager.h; sourceTree = "<group>"; };
+		16D2310724076B1E004D9546 /* TRTCStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCStatistics.h; sourceTree = "<group>"; };
+		16D2310824076B1E004D9546 /* TXAudioRawDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXAudioRawDataDelegate.h; sourceTree = "<group>"; };
+		16D2310924076B1E004D9546 /* TXLivePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLivePlayer.h; sourceTree = "<group>"; };
+		16D2310A24076B1E004D9546 /* TXVideoCustomProcessDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXVideoCustomProcessDelegate.h; sourceTree = "<group>"; };
+		16D2310B24076B1E004D9546 /* TXLiveRecordTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveRecordTypeDef.h; sourceTree = "<group>"; };
+		16D2310C24076B1E004D9546 /* TXLiveAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveAudioSessionDelegate.h; sourceTree = "<group>"; };
+		16F91637240418430096DC7E /* RNTXCloudVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoView.m; sourceTree = "<group>"; };
+		16F91638240418710096DC7E /* RNTXCloudVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoView.h; sourceTree = "<group>"; };
+		16F91639240419920096DC7E /* RNTXCloudVideoViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoViewManager.h; sourceTree = "<group>"; };
+		16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoViewManager.m; sourceTree = "<group>"; };
+		16F9163D24041F170096DC7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B3E7B5881CC2AC0600A0062D /* RNTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTrtc.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16D2310D24076B1E004D9546 /* TXLiteAVSDK_TRTC.a in Frameworks */,
+				16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134814211AA4EA7D00B7C361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				134814201AA4EA6300B7C361 /* libRNTrtc.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */ = {
+			isa = PBXGroup;
+			children = (
+				16D230F924076B1E004D9546 /* TXLiteAVSDK_TRTC.a */,
+				16D230FA24076B1E004D9546 /* TXLiveBase.h */,
+				16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */,
+				16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */,
+				16D230FD24076B1E004D9546 /* TRTCCloud.h */,
+				16D230FE24076B1E004D9546 /* TRTCCloudDef.h */,
+				16D230FF24076B1E004D9546 /* TXLivePlayConfig.h */,
+				16D2310024076B1E004D9546 /* TXLiveSDKTypeDef.h */,
+				16D2310124076B1E004D9546 /* TRTCCloudDelegate.h */,
+				16D2310224076B1E004D9546 /* TXLiteAVSDK.h */,
+				16D2310324076B1E004D9546 /* TXAudioCustomProcessDelegate.h */,
+				16D2310424076B1E004D9546 /* TXLivePlayListener.h */,
+				16D2310524076B1E004D9546 /* TXLiteAVCode.h */,
+				16D2310624076B1E004D9546 /* TXBeautyManager.h */,
+				16D2310724076B1E004D9546 /* TRTCStatistics.h */,
+				16D2310824076B1E004D9546 /* TXAudioRawDataDelegate.h */,
+				16D2310924076B1E004D9546 /* TXLivePlayer.h */,
+				16D2310A24076B1E004D9546 /* TXVideoCustomProcessDelegate.h */,
+				16D2310B24076B1E004D9546 /* TXLiveRecordTypeDef.h */,
+				16D2310C24076B1E004D9546 /* TXLiveAudioSessionDelegate.h */,
+			);
+			path = TXLiteAVSDK_TRTC;
+			sourceTree = "<group>";
+		};
+		16F9162F240400730096DC7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				16F9163D24041F170096DC7E /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */,
+				16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */,
+				16BF44192404FC6500CFCCFE /* GenerateSigHelper.h */,
+				16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */,
+				16F91639240419920096DC7E /* RNTXCloudVideoViewManager.h */,
+				16F91638240418710096DC7E /* RNTXCloudVideoView.h */,
+				16F91637240418430096DC7E /* RNTXCloudVideoView.m */,
+				B3E7B5881CC2AC0600A0062D /* RNTrtc.h */,
+				1612324124069A32003A87E3 /* RNTrtc.m */,
+				134814211AA4EA7D00B7C361 /* Products */,
+				16F9162F240400730096DC7E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58B511DA1A9E6C8500147676 /* RNTrtc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNTrtc" */;
+			buildPhases = (
+				58B511D71A9E6C8500147676 /* Sources */,
+				58B511D81A9E6C8500147676 /* Frameworks */,
+				58B511D91A9E6C8500147676 /* Copy Files */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNTrtc;
+			productName = RCTDataManager;
+			productReference = 134814201AA4EA6300B7C361 /* libRNTrtc.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B511D31A9E6C8500147676 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					58B511DA1A9E6C8500147676 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNTrtc" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				en,
+			);
+			mainGroup = 58B511D21A9E6C8500147676;
+			productRefGroup = 58B511D21A9E6C8500147676;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58B511DA1A9E6C8500147676 /* RNTrtc */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58B511D71A9E6C8500147676 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1612324224069A33003A87E3 /* RNTrtc.m in Sources */,
+				16BF441B2404FC8100CFCCFE /* GenerateSigHelper.m in Sources */,
+				16F9163C24041DF20096DC7E /* RNTXCloudVideoView.m in Sources */,
+				16F9163B240419D10096DC7E /* RNTXCloudVideoViewManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		58B511ED1A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		58B511EE1A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58B511F01A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TXLiteAVSDK_TRTC",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RNTrtc;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEAD_CODE_STRIPPING = YES;
+				ENABLE_BITCODE = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/TXLiteAVSDK_TRTC",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RNTrtc;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNTrtc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511ED1A9E6C8500147676 /* Debug */,
+				58B511EE1A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNTrtc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511F01A9E6C8500147676 /* Debug */,
+				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
+}
