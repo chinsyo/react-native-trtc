@@ -13,8 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RNTXCloudVideoView : UIView
 
-- (void)setUserId:(NSString *)userId;
-- (NSString *)getUserId;
+@property (nonatomic, copy) NSString *userId;
+//- (void)setUserId:(NSString *)userId;
+//- (NSString *)getUserId;
 
 @end
 

@@ -14,20 +14,18 @@
 
 @interface RNTXCloudVideoView()
 
-@property (nonatomic, strong, readonly) TRTCCloud *trtc;
-
-@property (nonatomic, strong) NSString * userId;
+@property (nonatomic, strong) TRTCCloud *trtc;
 
 @end
 
 @implementation RNTXCloudVideoView
 
-
-
 - (instancetype)init
 {
     self = [super init];
-    _trtc=[TRTCCloud sharedInstance];
+    if (self) {
+        _trtc = [TRTCCloud sharedInstance];
+    }
     return self;
 }
 
@@ -39,12 +37,9 @@
         } else {
             [_trtc setRemoteViewFillMode:_userId mode:TRTCVideoFillMode_Fill];
             [_trtc startRemoteView:_userId view:self];
-            
         }
     }
-    
 }
-
 
 - (void)stop {
     if (_trtc) {
@@ -60,11 +55,11 @@
 
 - (void)setUserId:(NSString *)userId {
     [self stop];
-    _userId = userId;
+    _userId = [userId copy];
     [self start];
 }
 
-- (NSString *) getUserId {
+- (NSString *)getUserId {
     return _userId;
 }
 
