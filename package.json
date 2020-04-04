@@ -1,6 +1,6 @@
 {
   "name": "react-native-trtc",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "react native trtc",
   "main": "index.js",
   "scripts": {
