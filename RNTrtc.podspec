@@ -12,10 +12,10 @@ Pod::Spec.new do |s|
   s.author       = package['author']
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/chinsyo/react-native-trtc.git", :tag => "v#{s.version}" }
-  s.preserve_paths = 'ios/TXLiteAVSDK_TRTC/**'
-  s.source_files  = "ios/*.{h,m}", "ios/TXLiteAVSDK_TRTC.h"
+  s.preserve_paths = 'ios/TXLiteAVSDK_TRTC/'
+  s.source_files  = "ios/*.{h,m}", "ios/TXLiteAVSDK_TRTC/*.h"
   s.vendored_libraries = 'ios/TXLiteAVSDK_TRTC/TXLiteAVSDK_TRTC.a'
-  s.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/ios/TXLiteAVSDK_TRTC/**" }
+  s.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/ios/TXLiteAVSDK_TRTC/" }
   s.requires_arc = true
 
   s.dependency "React"
