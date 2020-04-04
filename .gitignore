@@ -2,9 +2,6 @@
 #
 .DS_Store
 
-# Large
-ios/TXLiteAVSDK_TRTC/*
-
 # Xcode
 #
 build/

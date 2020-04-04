@@ -25,8 +25,7 @@ static NSString *selfUserId;
     return dispatch_get_main_queue();
 }
 
-
-RCT_EXPORT_MODULE();
+RCT_EXPORT_MODULE()
 
 + (NSString *)getSelfUserId {
     return selfUserId;

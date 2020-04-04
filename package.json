@@ -1,7 +1,7 @@
 {
   "name": "react-native-trtc",
-  "version": "1.0.16",
-  "description": "",
+  "version": "0.0.4",
+  "description": "react native trtc",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,8 @@
     "react-native",
     "react-native-trtc"
   ],
-  "author": "yubaorong",
+  "author": "chinsyo",
+  "homepage": "https://github.com/chinsyo/react-native-trtc",
   "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.55.4"
