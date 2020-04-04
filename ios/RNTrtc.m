@@ -6,12 +6,13 @@
 #import "TXLiteAVCode.h"
 #import "TRTCCloudDef.h"
 #import "TRTCStatistics.h"
+
 #import "RNTXCloudVideoView.h"
 
 static BOOL mFrontCamera=true;
 static NSString *selfUserId;
 
-@interface RNTrtc()<TRTCCloudDelegate, TRTCLogDelegate, TRTCAudioFrameDelegate>{
+@interface RNTrtc() <TRTCCloudDelegate, TRTCLogDelegate, TRTCAudioFrameDelegate> {
     TRTCCloud *trtcCloud;
 }
 
