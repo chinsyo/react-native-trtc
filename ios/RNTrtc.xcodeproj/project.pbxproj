@@ -12,10 +12,7 @@
 		16F9163B240419D10096DC7E /* RNTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */; };
 		16F9163C24041DF20096DC7E /* RNTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16F91637240418430096DC7E /* RNTXCloudVideoView.m */; };
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; };
-		29D5048924390DFA0032E4B7 /* TXLiteAVSDK_TRTC_arm64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048524390DFA0032E4B7 /* TXLiteAVSDK_TRTC_arm64.a */; };
-		29D5048A24390DFA0032E4B7 /* TXLiteAVSDK_TRTC_i386.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048624390DFA0032E4B7 /* TXLiteAVSDK_TRTC_i386.a */; };
-		29D5048B24390DFA0032E4B7 /* TXLiteAVSDK_TRTC_armv7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048724390DFA0032E4B7 /* TXLiteAVSDK_TRTC_armv7.a */; };
-		29D5048C24390DFA0032E4B7 /* TXLiteAVSDK_TRTC_x86_64.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048824390DFA0032E4B7 /* TXLiteAVSDK_TRTC_x86_64.a */; };
+		29D5048E24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,10 +57,7 @@
 		16F91639240419920096DC7E /* RNTXCloudVideoViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoViewManager.h; sourceTree = "<group>"; };
 		16F9163A240419D10096DC7E /* RNTXCloudVideoViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoViewManager.m; sourceTree = "<group>"; };
 		16F9163D24041F170096DC7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		29D5048524390DFA0032E4B7 /* TXLiteAVSDK_TRTC_arm64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC_arm64.a; sourceTree = "<group>"; };
-		29D5048624390DFA0032E4B7 /* TXLiteAVSDK_TRTC_i386.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC_i386.a; sourceTree = "<group>"; };
-		29D5048724390DFA0032E4B7 /* TXLiteAVSDK_TRTC_armv7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC_armv7.a; sourceTree = "<group>"; };
-		29D5048824390DFA0032E4B7 /* TXLiteAVSDK_TRTC_x86_64.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC_x86_64.a; sourceTree = "<group>"; };
+		29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTrtc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,11 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29D5048C24390DFA0032E4B7 /* TXLiteAVSDK_TRTC_x86_64.a in Frameworks */,
+				29D5048E24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a in Frameworks */,
 				16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */,
-				29D5048A24390DFA0032E4B7 /* TXLiteAVSDK_TRTC_i386.a in Frameworks */,
-				29D5048B24390DFA0032E4B7 /* TXLiteAVSDK_TRTC_armv7.a in Frameworks */,
-				29D5048924390DFA0032E4B7 /* TXLiteAVSDK_TRTC_arm64.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,10 +85,7 @@
 		16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */ = {
 			isa = PBXGroup;
 			children = (
-				29D5048524390DFA0032E4B7 /* TXLiteAVSDK_TRTC_arm64.a */,
-				29D5048724390DFA0032E4B7 /* TXLiteAVSDK_TRTC_armv7.a */,
-				29D5048624390DFA0032E4B7 /* TXLiteAVSDK_TRTC_i386.a */,
-				29D5048824390DFA0032E4B7 /* TXLiteAVSDK_TRTC_x86_64.a */,
+				29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */,
 				16D230FA24076B1E004D9546 /* TXLiveBase.h */,
 				16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */,
 				16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */,
