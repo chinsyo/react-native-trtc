@@ -5,8 +5,8 @@
 
 @interface RNTrtc : RCTEventEmitter <RCTBridgeModule>
 
-+(BOOL) isFrontCamera;
-+(NSString *) getSelfUserId;
++ (BOOL)isFrontCamera;
++ (NSString *)getSelfUserId;
 
 @end
 
