@@ -7,9 +7,7 @@
 #import "TRTCCloudDef.h"
 #import "TRTCStatistics.h"
 
-#import "RNTXCloudVideoView.h"
-
-static BOOL mFrontCamera=true;
+static BOOL mFrontCamera = true;
 static NSString *selfUserId;
 
 @interface RNTrtc() <TRTCCloudDelegate, TRTCLogDelegate, TRTCAudioFrameDelegate> {
@@ -263,171 +261,6 @@ RCT_EXPORT_METHOD(setMixTranscodingConfig:(NSDictionary *) config )
 //    [trtcCloud setMixTranscodingConfig:transConfig];
 }
 
-#pragma mark 视频相关接口函数
-RCT_EXPORT_METHOD(startLocalPreview:(BOOL) frontCamera){
-    NSLog(@"startLocalPreview:frontCamera=%u",frontCamera);
-    mFrontCamera=frontCamera;
-    RNTXCloudVideoView *coludView=[self findViewByUserId:([UIApplication sharedApplication].delegate).window.rootViewController.view userId:selfUserId];
-    if (coludView) {
-        [trtcCloud startLocalPreview:frontCamera view:coludView];
-    }
-}
-
-RCT_EXPORT_METHOD(stopLocalPreview)
-{
-    NSLog(@"stopLocalPreview");
-    [trtcCloud stopLocalPreview ];
-}
-
-RCT_EXPORT_METHOD(muteLocalVideo:(BOOL) mute)
-{
-    NSLog(@"muteLocalVideo");
-    [trtcCloud muteLocalVideo:mute ];
-}
-
-RCT_EXPORT_METHOD(startRemoteView:(NSString *) userId)
-{
-    NSLog(@"startRemoteView");
-    RNTXCloudVideoView *coludView=[self findViewByUserId:([UIApplication sharedApplication].delegate).window.rootViewController.view userId:userId];
-    if(coludView){
-        [trtcCloud startRemoteView:userId view:coludView];
-    }
-}
-
-
-RCT_EXPORT_METHOD(stopRemoteView:(NSString *) userId)
-{
-    NSLog(@"stopRemoteView");
-    [trtcCloud stopRemoteView:userId ];
-}
-
-
-RCT_EXPORT_METHOD(stopAllRemoteView)
-{
-    NSLog(@"stopAllRemoteView");
-    [trtcCloud stopAllRemoteView ];
-    
-}
-
-RCT_EXPORT_METHOD(muteRemoteVideoStream:(NSString *) userId mute:(BOOL) mute)
-{
-    NSLog(@"muteRemoteVideoStream");
-    [trtcCloud muteRemoteVideoStream:userId  mute:mute];
-}
-
-RCT_EXPORT_METHOD(muteAllRemoteVideoStreams:(BOOL) mute)
-{
-    NSLog(@"muteAllRemoteVideoStreams");
-    [trtcCloud muteAllRemoteVideoStreams:mute];
-}
-
-RCT_EXPORT_METHOD(setVideoEncoderParam:(NSDictionary *) data)
-{
-    NSLog(@"setVideoEncoderParam");
-    TRTCVideoEncParam *encParam= [[TRTCVideoEncParam alloc] init];
-    encParam.videoResolution=[data[@"videoResolution"] integerValue];
-    encParam.enableAdjustRes=[data[@"enableAdjustRes"] boolValue];
-    encParam.videoBitrate=[data[@"videoBitrate"] integerValue];
-    encParam.videoFps=[data[@"videoFps"] integerValue];
-    encParam.resMode=[data[@"videoResolutionMode"] integerValue];
-    [trtcCloud setVideoEncoderParam:encParam];
-}
-
-RCT_EXPORT_METHOD(setNetworkQosParam:(NSDictionary *) data)
-{  NSLog(@"setNetworkQosParam");
-    TRTCNetworkQosParam *qosParam=[[TRTCNetworkQosParam alloc]init];
-    qosParam.preference=[data[@"preference"] integerValue];
-    qosParam.controlMode=[data[@"controlMode"] integerValue];
-    [trtcCloud setNetworkQosParam:qosParam];
-}
-
-RCT_EXPORT_METHOD(setLocalViewFillMode:(NSInteger) mode)
-{
-    NSLog(@"setLocalViewFillMode");
-    [trtcCloud setLocalViewFillMode:mode];
-}
-
-RCT_EXPORT_METHOD(setRemoteViewFillMode:(NSString *) userId mode:(NSInteger) mode)
-{
-    NSLog(@"setRemoteViewFillMode");
-    [trtcCloud setRemoteViewFillMode:userId mode:mode];
-}
-
-RCT_EXPORT_METHOD(setLocalViewRotation:(NSInteger) rotation)
-{
-    NSLog(@"setLocalViewRotation");
-    [trtcCloud setLocalViewRotation:rotation];
-}
-
-RCT_EXPORT_METHOD(setRemoteViewRotation:(NSString *) userId rotation:(NSInteger) rotation)
-{
-    NSLog(@"setRemoteViewRotation");
-    [trtcCloud setRemoteViewRotation:userId rotation:rotation];
-}
-
-
-RCT_EXPORT_METHOD(setVideoEncoderRotation:(NSInteger) rotation)
-{
-    NSLog(@"setVideoEncoderRotation");
-    [trtcCloud setVideoEncoderRotation:rotation];
-}
-
-RCT_EXPORT_METHOD(setLocalViewMirror:(NSInteger) mirrorType)
-{
-    NSLog(@"setLocalViewMirror");
-    [trtcCloud setLocalViewMirror:mirrorType];
-}
-
-RCT_EXPORT_METHOD(setVideoEncoderMirror:(BOOL) mirror)
-{
-    NSLog(@"setVideoEncoderMirror");
-    [trtcCloud setVideoEncoderMirror:mirror];
-}
-
-RCT_EXPORT_METHOD(setGSensorMode:(NSInteger) mode)
-{
-    NSLog(@"setGSensorMode");
-    [trtcCloud setGSensorMode:mode];
-}
-
-RCT_EXPORT_METHOD(enableEncSmallVideoStream:(BOOL) enable  smallVideoEncParam:(NSDictionary *) smallVideoEncParam resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
-{
-    NSLog(@"enableEncSmallVideoStream");
-    TRTCVideoEncParam *encParam= [[TRTCVideoEncParam alloc] init];
-    encParam.videoResolution=[smallVideoEncParam[@"videoResolution"] integerValue];
-    encParam.enableAdjustRes=[smallVideoEncParam[@"enableAdjustRes"] boolValue];
-    encParam.videoBitrate=[smallVideoEncParam[@"videoBitrate"] integerValue];
-    encParam.videoFps=[smallVideoEncParam[@"videoFps"] integerValue];
-    encParam.resMode=[smallVideoEncParam[@"videoResolutionMode"] integerValue];
-    
-    int result=  [trtcCloud enableEncSmallVideoStream:enable withQuality:encParam];
-    resolve(@(result));
-}
-
-RCT_EXPORT_METHOD(setRemoteVideoStreamType:(NSString *) userId  streamType:(NSInteger) streamType resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
-{
-    NSLog(@"setRemoteVideoStreamType");
-    [trtcCloud setRemoteVideoStreamType:userId type:streamType];
-    resolve(@(1));
-}
-
-RCT_EXPORT_METHOD(setPriorRemoteVideoStreamType:(NSInteger) streamType   resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
-{
-    NSLog(@"setPriorRemoteVideoStreamType");
-    [trtcCloud setPriorRemoteVideoStreamType:streamType];
-    resolve(@(1));
-}
-
-RCT_EXPORT_METHOD(snapshotVideo:(NSString *) userId  streamType:(NSInteger) streamType resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
-{
-    NSLog(@"snapshotVideo");
-    [trtcCloud snapshotVideo:userId type:streamType completionBlock:^(TXImage *image) {
-        if (image) {
-            NSString *base64= [UIImagePNGRepresentation(image)base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-            resolve(base64);
-        }
-    }];
-}
 
 
 #pragma mark 音频相关接口函数
@@ -816,24 +649,6 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 #pragma mark - 音效回调
 - (void)onAudioEffectFinished:(int)effectId code:(int)code {
     [self sendEventWithName:@"onAudioEffectFinished" body:@{@"effectId": @(effectId), @"code": @(code)}];
-}
-
-#pragma mark -
-- (RNTXCloudVideoView *) findViewByUserId:(UIView *) root userId:(NSString *)userId {
-    if ([root isKindOfClass:[RNTXCloudVideoView class]]) {
-        RNTXCloudVideoView *cloudView = (RNTXCloudVideoView *)root;
-        if ([userId isEqualToString:[cloudView getUserId]]) {
-            return cloudView;
-        }
-    }
-    
-    for (UIView *subview in root.subviews) {
-        RNTXCloudVideoView *cloudView = [self findViewByUserId:subview userId:userId];
-        if (cloudView) {
-            return cloudView;
-        }
-    }
-    return nil;
 }
 
 @end
