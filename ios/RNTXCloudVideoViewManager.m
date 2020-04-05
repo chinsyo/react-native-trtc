@@ -13,7 +13,8 @@
 
 @implementation RNTXCloudVideoViewManager
 
-RCT_EXPORT_MODULE()
+RCT_EXPORT_MODULE(RNTXCloudVideoView)
+RCT_EXPORT_VIEW_PROPERTY(userId, NSString)
 
 - (UIView *)view
 {
@@ -21,7 +22,5 @@ RCT_EXPORT_MODULE()
     RNTXCloudVideoView * viewInstance = [[RNTXCloudVideoView alloc] init];
     return viewInstance;
 }
-
-RCT_EXPORT_VIEW_PROPERTY(userId, NSString)
 
 @end
