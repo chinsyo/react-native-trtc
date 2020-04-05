@@ -1,6 +1,6 @@
 
 #import "RNTrtc.h"
-#import "GenerateSigHelper.h"
+//#import "GenerateSigHelper.h"
 #import "TRTCCloud.h"
 #import "TRTCCloudDelegate.h"
 #import "TXLiteAVCode.h"
@@ -26,7 +26,7 @@ static NSString *selfUserId;
 
 RCT_EXPORT_MODULE()
 
-#if 0
+
 + (NSString *)getSelfUserId {
     return selfUserId;
 }
@@ -91,8 +91,8 @@ RCT_EXPORT_METHOD(creatUserSig:(NSInteger)sdkAppId secretKey:(NSString *) secret
     NSLog(@"creatUserSig sdkAppId:%d secretKey:%@", sdkAppId, secretKey);
     @try
     {
-        NSString *userSig = [GenerateSigHelper genUserSig:sdkAppId userId:userId secretKey:secretKey];
-        resolve(userSig);
+//        NSString *userSig = [GenerateSigHelper genUserSig:sdkAppId userId:userId secretKey:secretKey];
+        resolve(@"");
     }
     @catch (NSException *exception)
     {
@@ -651,5 +651,5 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onAudioEffectFinished:(int)effectId code:(int)code {
     [self sendEventWithName:@"onAudioEffectFinished" body:@{@"effectId": @(effectId), @"code": @(code)}];
 }
-#endif
+
 @end

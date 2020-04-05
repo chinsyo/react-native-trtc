@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1612324224069A33003A87E3 /* RNTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RNTrtc.m */; platformFilter = ios; };
-		16BF441B2404FC8100CFCCFE /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */; platformFilter = ios; };
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; platformFilter = ios; };
 		29D5048E24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */; platformFilter = ios; };
 		29D5048F243913510032E4B7 /* TXLiveBase.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FA24076B1E004D9546 /* TXLiveBase.h */; platformFilter = ios; };
@@ -48,8 +47,6 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNTrtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTrtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1612324124069A32003A87E3 /* RNTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTrtc.m; sourceTree = "<group>"; };
-		16BF44192404FC6500CFCCFE /* GenerateSigHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GenerateSigHelper.h; sourceTree = "<group>"; };
-		16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GenerateSigHelper.m; sourceTree = "<group>"; };
 		16D230FA24076B1E004D9546 /* TXLiveBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveBase.h; sourceTree = "<group>"; };
 		16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveSDKEventDef.h; sourceTree = "<group>"; };
 		16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveRecordListener.h; sourceTree = "<group>"; };
@@ -134,8 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */,
-				16BF441A2404FC8100CFCCFE /* GenerateSigHelper.m */,
-				16BF44192404FC6500CFCCFE /* GenerateSigHelper.h */,
 				B3E7B5881CC2AC0600A0062D /* RNTrtc.h */,
 				1612324124069A32003A87E3 /* RNTrtc.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -220,7 +215,6 @@
 				29D504A0243913510032E4B7 /* TXLiveRecordTypeDef.h in Sources */,
 				29D504A1243913510032E4B7 /* TXLiveAudioSessionDelegate.h in Sources */,
 				1612324224069A33003A87E3 /* RNTrtc.m in Sources */,
-				16BF441B2404FC8100CFCCFE /* GenerateSigHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,7 +318,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TXLiteAVSDK_TRTC",
 				);
-				MODULEMAP_FILE = "${SRC_ROOT}/CommonCrypto/module.modulemap";
+				MODULEMAP_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNTrtc;
 				SKIP_INSTALL = YES;
@@ -348,7 +342,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TXLiteAVSDK_TRTC",
 				);
-				MODULEMAP_FILE = "${SRC_ROOT}/CommonCrypto/module.modulemap";
+				MODULEMAP_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNTrtc;

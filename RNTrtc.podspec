@@ -14,12 +14,9 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/chinsyo/react-native-trtc.git", :tag => "v#{s.version}" }
   s.preserve_paths = 'ios/**/*.{h,a}'
   s.source_files = "ios/*.{h,m}", "ios/TXLiteAVSDK_TRTC/*.h"
-  s.frameworks   = "CommonCrypto"
-  s.libraries    = "zlib"
   s.vendored_libraries = 'ios/TXLiteAVSDK_TRTC/*.a'
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/ios/TXLiteAVSDK_TRTC/" }
   s.requires_arc = true
-  s.module_map = "${PODS_ROOT}/ios/CommonCrypto/module.modulemap"
 
   s.dependency "React"
   #s.dependency "others"
