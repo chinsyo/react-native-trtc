@@ -26,6 +26,7 @@ static NSString *selfUserId;
 
 RCT_EXPORT_MODULE()
 
+#if 0
 + (NSString *)getSelfUserId {
     return selfUserId;
 }
@@ -650,5 +651,5 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onAudioEffectFinished:(int)effectId code:(int)code {
     [self sendEventWithName:@"onAudioEffectFinished" body:@{@"effectId": @(effectId), @"code": @(code)}];
 }
-
+#endif
 @end
