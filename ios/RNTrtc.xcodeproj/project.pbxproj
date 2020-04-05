@@ -324,6 +324,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TXLiteAVSDK_TRTC",
 				);
+				MODULEMAP_FILE = "${SRC_ROOT}/CommonCrypto/module.modulemap";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNTrtc;
 				SKIP_INSTALL = YES;
@@ -347,6 +348,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/TXLiteAVSDK_TRTC",
 				);
+				MODULEMAP_FILE = "${SRC_ROOT}/CommonCrypto/module.modulemap";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = RNTrtc;

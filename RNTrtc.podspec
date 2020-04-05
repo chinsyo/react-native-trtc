@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.vendored_libraries = 'ios/TXLiteAVSDK_TRTC/*.a'
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/ios/TXLiteAVSDK_TRTC/" }
   s.requires_arc = true
+  s.module_map = "${PODS_ROOT}/ios/CommonCrypto/module.modulemap"
 
   s.dependency "React"
   #s.dependency "others"
