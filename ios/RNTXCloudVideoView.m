@@ -16,7 +16,8 @@
 
 @interface RNTXCloudVideoView()
 
-@property (nonatomic, strong) TRTCCloud *trtc;
+@property (nonatomic, strong, readonly) TRTCCloud *trtc;
+@property (nonatomic, strong) NSString *userId;
 
 @end
 
@@ -53,11 +54,9 @@
     }
 }
 
-
-
 - (void)setUserId:(NSString *)userId {
     [self stop];
-    _userId = [userId copy];
+    _userId = userId;
     [self start];
 }
 
