@@ -1,11 +1,12 @@
 
 #import "RNTrtc.h"
 //#import "GenerateSigHelper.h"
-#import "TRTCCloud.h"
-#import "TRTCCloudDelegate.h"
-#import "TXLiteAVCode.h"
-#import "TRTCCloudDef.h"
-#import "TRTCStatistics.h"
+#import <TXLiteAVSDK_TRTC/TRTCCloud.h>
+#import <TXLiteAVSDK_TRTC/TRTCCloud.h>
+#import <TXLiteAVSDK_TRTC/TRTCCloudDelegate.h>
+#import <TXLiteAVSDK_TRTC/TXLiteAVCode.h>
+#import <TXLiteAVSDK_TRTC/TRTCCloudDef.h>
+#import <TXLiteAVSDK_TRTC/TRTCStatistics.h>
 
 static BOOL mFrontCamera = true;
 static NSString *selfUserId;

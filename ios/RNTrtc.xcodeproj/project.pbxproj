@@ -9,26 +9,6 @@
 /* Begin PBXBuildFile section */
 		1612324224069A33003A87E3 /* RNTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RNTrtc.m */; platformFilter = ios; };
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; platformFilter = ios; };
-		29D5048E24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */; platformFilter = ios; };
-		29D5048F243913510032E4B7 /* TXLiveBase.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FA24076B1E004D9546 /* TXLiveBase.h */; platformFilter = ios; };
-		29D50490243913510032E4B7 /* TXLiveSDKEventDef.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */; platformFilter = ios; };
-		29D50491243913510032E4B7 /* TXLiveRecordListener.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */; platformFilter = ios; };
-		29D50492243913510032E4B7 /* TRTCCloud.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FD24076B1E004D9546 /* TRTCCloud.h */; platformFilter = ios; };
-		29D50493243913510032E4B7 /* TRTCCloudDef.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FE24076B1E004D9546 /* TRTCCloudDef.h */; platformFilter = ios; };
-		29D50494243913510032E4B7 /* TXLivePlayConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D230FF24076B1E004D9546 /* TXLivePlayConfig.h */; platformFilter = ios; };
-		29D50495243913510032E4B7 /* TXLiveSDKTypeDef.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310024076B1E004D9546 /* TXLiveSDKTypeDef.h */; platformFilter = ios; };
-		29D50496243913510032E4B7 /* TRTCCloudDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310124076B1E004D9546 /* TRTCCloudDelegate.h */; platformFilter = ios; };
-		29D50497243913510032E4B7 /* TXLiteAVSDK.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310224076B1E004D9546 /* TXLiteAVSDK.h */; platformFilter = ios; };
-		29D50498243913510032E4B7 /* TXAudioCustomProcessDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310324076B1E004D9546 /* TXAudioCustomProcessDelegate.h */; platformFilter = ios; };
-		29D50499243913510032E4B7 /* TXLivePlayListener.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310424076B1E004D9546 /* TXLivePlayListener.h */; platformFilter = ios; };
-		29D5049A243913510032E4B7 /* TXLiteAVCode.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310524076B1E004D9546 /* TXLiteAVCode.h */; platformFilter = ios; };
-		29D5049B243913510032E4B7 /* TXBeautyManager.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310624076B1E004D9546 /* TXBeautyManager.h */; platformFilter = ios; };
-		29D5049C243913510032E4B7 /* TRTCStatistics.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310724076B1E004D9546 /* TRTCStatistics.h */; platformFilter = ios; };
-		29D5049D243913510032E4B7 /* TXAudioRawDataDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310824076B1E004D9546 /* TXAudioRawDataDelegate.h */; platformFilter = ios; };
-		29D5049E243913510032E4B7 /* TXLivePlayer.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310924076B1E004D9546 /* TXLivePlayer.h */; platformFilter = ios; };
-		29D5049F243913510032E4B7 /* TXVideoCustomProcessDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310A24076B1E004D9546 /* TXVideoCustomProcessDelegate.h */; platformFilter = ios; };
-		29D504A0243913510032E4B7 /* TXLiveRecordTypeDef.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310B24076B1E004D9546 /* TXLiveRecordTypeDef.h */; platformFilter = ios; };
-		29D504A1243913510032E4B7 /* TXLiveAudioSessionDelegate.h in Sources */ = {isa = PBXBuildFile; fileRef = 16D2310C24076B1E004D9546 /* TXLiveAudioSessionDelegate.h */; platformFilter = ios; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,27 +27,7 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNTrtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTrtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1612324124069A32003A87E3 /* RNTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTrtc.m; sourceTree = "<group>"; };
-		16D230FA24076B1E004D9546 /* TXLiveBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveBase.h; sourceTree = "<group>"; };
-		16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveSDKEventDef.h; sourceTree = "<group>"; };
-		16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveRecordListener.h; sourceTree = "<group>"; };
-		16D230FD24076B1E004D9546 /* TRTCCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCloud.h; sourceTree = "<group>"; };
-		16D230FE24076B1E004D9546 /* TRTCCloudDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCloudDef.h; sourceTree = "<group>"; };
-		16D230FF24076B1E004D9546 /* TXLivePlayConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLivePlayConfig.h; sourceTree = "<group>"; };
-		16D2310024076B1E004D9546 /* TXLiveSDKTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveSDKTypeDef.h; sourceTree = "<group>"; };
-		16D2310124076B1E004D9546 /* TRTCCloudDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCloudDelegate.h; sourceTree = "<group>"; };
-		16D2310224076B1E004D9546 /* TXLiteAVSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiteAVSDK.h; sourceTree = "<group>"; };
-		16D2310324076B1E004D9546 /* TXAudioCustomProcessDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXAudioCustomProcessDelegate.h; sourceTree = "<group>"; };
-		16D2310424076B1E004D9546 /* TXLivePlayListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLivePlayListener.h; sourceTree = "<group>"; };
-		16D2310524076B1E004D9546 /* TXLiteAVCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiteAVCode.h; sourceTree = "<group>"; };
-		16D2310624076B1E004D9546 /* TXBeautyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXBeautyManager.h; sourceTree = "<group>"; };
-		16D2310724076B1E004D9546 /* TRTCStatistics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCStatistics.h; sourceTree = "<group>"; };
-		16D2310824076B1E004D9546 /* TXAudioRawDataDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXAudioRawDataDelegate.h; sourceTree = "<group>"; };
-		16D2310924076B1E004D9546 /* TXLivePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLivePlayer.h; sourceTree = "<group>"; };
-		16D2310A24076B1E004D9546 /* TXVideoCustomProcessDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXVideoCustomProcessDelegate.h; sourceTree = "<group>"; };
-		16D2310B24076B1E004D9546 /* TXLiveRecordTypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveRecordTypeDef.h; sourceTree = "<group>"; };
-		16D2310C24076B1E004D9546 /* TXLiveAudioSessionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TXLiveAudioSessionDelegate.h; sourceTree = "<group>"; };
 		16F9163D24041F170096DC7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TXLiteAVSDK_TRTC.a; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTrtc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29D5048E24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a in Frameworks */,
 				16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,33 +51,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */ = {
-			isa = PBXGroup;
-			children = (
-				29D5048D24390F7D0032E4B7 /* TXLiteAVSDK_TRTC.a */,
-				16D230FA24076B1E004D9546 /* TXLiveBase.h */,
-				16D230FB24076B1E004D9546 /* TXLiveSDKEventDef.h */,
-				16D230FC24076B1E004D9546 /* TXLiveRecordListener.h */,
-				16D230FD24076B1E004D9546 /* TRTCCloud.h */,
-				16D230FE24076B1E004D9546 /* TRTCCloudDef.h */,
-				16D230FF24076B1E004D9546 /* TXLivePlayConfig.h */,
-				16D2310024076B1E004D9546 /* TXLiveSDKTypeDef.h */,
-				16D2310124076B1E004D9546 /* TRTCCloudDelegate.h */,
-				16D2310224076B1E004D9546 /* TXLiteAVSDK.h */,
-				16D2310324076B1E004D9546 /* TXAudioCustomProcessDelegate.h */,
-				16D2310424076B1E004D9546 /* TXLivePlayListener.h */,
-				16D2310524076B1E004D9546 /* TXLiteAVCode.h */,
-				16D2310624076B1E004D9546 /* TXBeautyManager.h */,
-				16D2310724076B1E004D9546 /* TRTCStatistics.h */,
-				16D2310824076B1E004D9546 /* TXAudioRawDataDelegate.h */,
-				16D2310924076B1E004D9546 /* TXLivePlayer.h */,
-				16D2310A24076B1E004D9546 /* TXVideoCustomProcessDelegate.h */,
-				16D2310B24076B1E004D9546 /* TXLiveRecordTypeDef.h */,
-				16D2310C24076B1E004D9546 /* TXLiveAudioSessionDelegate.h */,
-			);
-			path = TXLiteAVSDK_TRTC;
-			sourceTree = "<group>";
-		};
 		16F9162F240400730096DC7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,7 +62,6 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				16D230F824076B1E004D9546 /* TXLiteAVSDK_TRTC */,
 				B3E7B5881CC2AC0600A0062D /* RNTrtc.h */,
 				1612324124069A32003A87E3 /* RNTrtc.m */,
 				134814211AA4EA7D00B7C361 /* Products */,
@@ -195,25 +126,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29D5048F243913510032E4B7 /* TXLiveBase.h in Sources */,
-				29D50490243913510032E4B7 /* TXLiveSDKEventDef.h in Sources */,
-				29D50491243913510032E4B7 /* TXLiveRecordListener.h in Sources */,
-				29D50492243913510032E4B7 /* TRTCCloud.h in Sources */,
-				29D50493243913510032E4B7 /* TRTCCloudDef.h in Sources */,
-				29D50494243913510032E4B7 /* TXLivePlayConfig.h in Sources */,
-				29D50495243913510032E4B7 /* TXLiveSDKTypeDef.h in Sources */,
-				29D50496243913510032E4B7 /* TRTCCloudDelegate.h in Sources */,
-				29D50497243913510032E4B7 /* TXLiteAVSDK.h in Sources */,
-				29D50498243913510032E4B7 /* TXAudioCustomProcessDelegate.h in Sources */,
-				29D50499243913510032E4B7 /* TXLivePlayListener.h in Sources */,
-				29D5049A243913510032E4B7 /* TXLiteAVCode.h in Sources */,
-				29D5049B243913510032E4B7 /* TXBeautyManager.h in Sources */,
-				29D5049C243913510032E4B7 /* TRTCStatistics.h in Sources */,
-				29D5049D243913510032E4B7 /* TXAudioRawDataDelegate.h in Sources */,
-				29D5049E243913510032E4B7 /* TXLivePlayer.h in Sources */,
-				29D5049F243913510032E4B7 /* TXVideoCustomProcessDelegate.h in Sources */,
-				29D504A0243913510032E4B7 /* TXLiveRecordTypeDef.h in Sources */,
-				29D504A1243913510032E4B7 /* TXLiveAudioSessionDelegate.h in Sources */,
 				1612324224069A33003A87E3 /* RNTrtc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
