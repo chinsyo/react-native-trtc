@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   # s.libraries = "c++"
   # s.vendored_libraries = 'ios/TXLiteAVSDK_TRTC/TXLiteAVSDK_TRTC.a'
   # s.xcconfig = { 'HEADER_SEARCH_PATHS' => "${PODS_ROOT}/ios/TXLiteAVSDK_TRTC/" }
-  s.public_headers = "ios/*.h"
+  s.public_header_files = "ios/*.h"
   s.requires_arc = true
 
   s.dependency "React"
