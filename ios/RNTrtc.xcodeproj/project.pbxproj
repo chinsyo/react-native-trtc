@@ -11,6 +11,7 @@
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; platformFilter = ios; };
 		2973227524398F5C0049A153 /* RNTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227224398F5C0049A153 /* RNTXCloudVideoView.m */; };
 		2973227624398F5C0049A153 /* RNTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227324398F5C0049A153 /* RNTXCloudVideoViewManager.m */; };
+		29D62828243A253D0084D4F4 /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D62826243A253D0084D4F4 /* GenerateSigHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		2973227224398F5C0049A153 /* RNTXCloudVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoView.m; sourceTree = "<group>"; };
 		2973227324398F5C0049A153 /* RNTXCloudVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoViewManager.m; sourceTree = "<group>"; };
 		2973227424398F5C0049A153 /* RNTXCloudVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoViewManager.h; sourceTree = "<group>"; };
+		29D62826243A253D0084D4F4 /* GenerateSigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateSigHelper.m; sourceTree = "<group>"; };
+		29D62827243A253D0084D4F4 /* GenerateSigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateSigHelper.h; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTrtc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +71,8 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				29D62827243A253D0084D4F4 /* GenerateSigHelper.h */,
+				29D62826243A253D0084D4F4 /* GenerateSigHelper.m */,
 				2973227124398F5C0049A153 /* RNTXCloudVideoView.h */,
 				2973227224398F5C0049A153 /* RNTXCloudVideoView.m */,
 				2973227424398F5C0049A153 /* RNTXCloudVideoViewManager.h */,
@@ -136,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29D62828243A253D0084D4F4 /* GenerateSigHelper.m in Sources */,
 				2973227524398F5C0049A153 /* RNTXCloudVideoView.m in Sources */,
 				1612324224069A33003A87E3 /* RNTrtc.m in Sources */,
 				2973227624398F5C0049A153 /* RNTXCloudVideoViewManager.m in Sources */,

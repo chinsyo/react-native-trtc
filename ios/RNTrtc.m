@@ -1,6 +1,6 @@
 
 #import "RNTrtc.h"
-//#import "GenerateSigHelper.h"
+#import "GenerateSigHelper.h"
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDelegate.h>
@@ -92,8 +92,8 @@ RCT_EXPORT_METHOD(creatUserSig:(NSInteger)sdkAppId secretKey:(NSString *) secret
     NSLog(@"creatUserSig sdkAppId:%d secretKey:%@", sdkAppId, secretKey);
     @try
     {
-//        NSString *userSig = [GenerateSigHelper genUserSig:sdkAppId userId:userId secretKey:secretKey];
-        resolve(@"");
+        NSString *userSig = [GenerateSigHelper genUserSig:sdkAppId userId:userId secretKey:secretKey];
+        resolve(userSig);
     }
     @catch (NSException *exception)
     {
