@@ -3,7 +3,7 @@
 #import "GenerateSigHelper.h"
 #import "RNTXCloudVideoView.h"
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
-#import <TXLiteAVSDK_TRTC/TRTCCloud.h>
+#import <TXLiteAVSDK_TRTC/TRTCCloudDef.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDelegate.h>
 #import <TXLiteAVSDK_TRTC/TXLiteAVCode.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDef.h>
