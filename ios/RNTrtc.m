@@ -675,7 +675,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onWarning:(TXLiteAVWarning)warningCode warningMsg:(NSString *)warningMsg {
     [self sendEventWithName:@"onWarning" body:@{
         @"warningCode": @(warningCode),
-        @"warningMsg": warningMsg ?: @""
+        @"warningMsg": warningMsg ?: @"",
     }];
 }
 
@@ -685,42 +685,42 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onError:(TXLiteAVError)errCode errMsg:(NSString *)errMsg extInfo:(nullable NSDictionary *)extInfo {
     [self sendEventWithName:@"onError" body:@{
         @"errCode": @(errCode),
-        @"errMsg": errMsg ?: @""
+        @"errMsg": errMsg ?: @"",
     }];
 }
 
 #pragma mark - 房间事件回调
 - (void)onEnterRoom:(NSInteger)elapsed {
     [self sendEventWithName:@"onEnterRoom" body:@{
-        @"elapsed": @(elapsed)
+        @"elapsed": @(elapsed),
     }];
 }
 
 
 - (void)onExitRoom:(NSInteger)reason {
     [self sendEventWithName:@"onExitRoom" body:@{
-        @"reason": @(reason)
+        @"reason": @(reason),
     }];
 }
 
 - (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
     [self sendEventWithName:@"onSwitchRole" body:@{
         @"errCode": @(errCode),
-        @"errMsg": errMsg ?: @""
+        @"errMsg": errMsg ?: @"",
     }];
 }
 
 - (void)onConnectOtherRoom:(NSString *)userId errCode:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
     [self sendEventWithName:@"onConnectOtherRoom" body:@{
         @"errCode": @(errCode),
-        @"errMsg": errMsg ?: @""
+        @"errMsg": errMsg ?: @"",
     }];
 }
 
 - (void)onDisconnectOtherRoom:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
     [self sendEventWithName:@"onDisconnectOtherRoom" body:@{
         @"errCode": @(errCode),
-        @"errMsg": errMsg ?: @""
+        @"errMsg": errMsg ?: @"",
     }];
 }
 
@@ -730,7 +730,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
  */
 - (void)onRemoteUserEnterRoom:(NSString *)userId {
     [self sendEventWithName:@"onRemoteUserEnterRoom" body:@{
-        @"userId": userId
+        @"userId": userId,
     }];
 }
 /**
@@ -739,7 +739,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason {
     [self sendEventWithName:@"onRemoteUserLeaveRoom" body:@{
         @"userId": userId,
-        @"reason": @(reason)
+        @"reason": @(reason),
     }];
 }
 
@@ -747,7 +747,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSLog(@"onUserAudioAvailable:userId:%@ available:%u", userId, available);
     [self sendEventWithName:@"onUserAudioAvailable" body:@{
         @"userId": userId ?: @"",
-        @"available": @(available)
+        @"available": @(available),
     }];
 }
 
@@ -755,7 +755,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSLog(@"onUserVideoAvailable:userId:%@ available==:%u", userId, available);
     [self sendEventWithName:@"onUserVideoAvailable" body:@{
         @"userId": userId ?: @"",
-        @"available": @(available)
+        @"available": @(available),
     }];
 }
 
@@ -763,7 +763,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSLog(@"onUserSubStreamAvailable:userId:%@ available:%u", userId, available);
     [self sendEventWithName:@"onUserSubStreamAvailable" body:@{
         @"userId": userId ?: @"",
-        @"available": @(available)
+        @"available": @(available),
     }];
 }
 
@@ -774,17 +774,21 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
             @"userId": userId ?: @"",
             @"streamType": @(streamType),
             @"width": @(width),
-            @"height": @(height)
+            @"height": @(height),
         }];
     }
 }
 
 - (void)onFirstAudioFrame:(NSString *)userId  {
-    [self sendEventWithName:@"onFirstAudioFrame" body:@{@"userId":userId?userId:@""}];
+    [self sendEventWithName:@"onFirstAudioFrame" body:@{
+        @"userId": userId ?: @"",
+    }];
 }
 
 - (void)onSendFirstLocalVideoFrame:(NSInteger)streamType  {
-    [self sendEventWithName:@"onSendFirstLocalVideoFrame" body:@{@"streamType":@(streamType)}];
+    [self sendEventWithName:@"onSendFirstLocalVideoFrame" body:@{
+        @"streamType": @(streamType),
+    }];
 }
 
 - (void)onSendFirstLocalAudioFrame  {
@@ -795,23 +799,26 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onNetworkQuality:(TRTCQualityInfo *)localQuality remoteQuality:(NSArray<TRTCQualityInfo *> *)remoteQuality {
     NSObject *localQui = @{
         @"userId": @"",
-        @"quality": @""
+        @"quality": @"",
     };
     if (localQuality) {
-        localQui =@{@"userId":localQuality.userId?localQuality.userId:@"",@"quality":@(localQuality.quality)};
+        localQui = @{
+            @"userId": localQuality.userId ?: @"",
+            @"quality": @(localQuality.quality),
+        };
     }
     NSMutableArray *remoteQui = [[NSMutableArray alloc] init];
     if (remoteQuality) {
         for (TRTCQualityInfo* qualityInfo in remoteQuality) {
             [remoteQui addObject:@{
                 @"userId": qualityInfo.userId ?: @"",
-                @"quality": @(qualityInfo.quality)
+                @"quality": @(qualityInfo.quality),
             }];
         }
     }
     [self sendEventWithName:@"onNetworkQuality" body:@{
         @"localQuality": localQui,
-        @"remoteQuality": remoteQui
+        @"remoteQuality": remoteQui,
     }];
 }
 
@@ -819,14 +826,32 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSMutableArray *localArray = [[NSMutableArray alloc] init];
     if (statistics && statistics.localStatistics) {
         for (TRTCLocalStatistics* local in statistics.localStatistics) {
-            [localArray addObject:@{@"width":@(local.width),@"height":@(local.height),@"frameRate":@(local.frameRate),@"videoBitrate":@(local.videoBitrate),@"audioSampleRate":@(local.audioSampleRate),@"audioBitrate":@(local.audioBitrate),@"streamType":@(local.streamType)}];
+            [localArray addObject:@{
+                @"width": @(local.width),
+                @"height": @(local.height),
+                @"frameRate": @(local.frameRate),
+                @"videoBitrate": @(local.videoBitrate),
+                @"audioSampleRate": @(local.audioSampleRate),
+                @"audioBitrate": @(local.audioBitrate),
+                @"streamType": @(local.streamType),
+            }];
         }
     }
 
     NSMutableArray *remoteArray = [[NSMutableArray alloc] init];
     if (statistics && statistics.remoteStatistics) {
         for (TRTCRemoteStatistics* remote in statistics.remoteStatistics) {
-            [remoteArray addObject:@{@"width":@(remote.width),@"height":@(remote.height),@"frameRate":@(remote.frameRate),@"videoBitrate":@(remote.videoBitrate),@"audioSampleRate":@(remote.audioSampleRate),@"audioBitrate":@(remote.audioBitrate),@"streamType":@(remote.streamType),@"userId":remote.userId?remote.userId:@"",@"finalLoss":@(remote.finalLoss)}];
+            [remoteArray addObject:@{
+                @"width": @(remote.width),
+                @"height": @(remote.height),
+                @"frameRate": @(remote.frameRate),
+                @"videoBitrate": @(remote.videoBitrate),
+                @"audioSampleRate": @(remote.audioSampleRate),
+                @"audioBitrate": @(remote.audioBitrate),
+                @"streamType": @(remote.streamType),
+                @"userId": remote.userId ?: @"",
+                @"finalLoss": @(remote.finalLoss),
+            }];
         }
     }
 
@@ -839,14 +864,17 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
         @"receiveBytes": @(statistics.receivedBytes),
         @"sendBytes": @(statistics.sentBytes),
         @"localArray": localArray,
-        @"remoteArray": remoteArray
+        @"remoteArray": remoteArray,
     }];
 }
 
 #pragma mark - 硬件设备事件回调
 - (void)onAudioRouteChanged:(TRTCAudioRoute)route fromRoute:(TRTCAudioRoute)fromRoute {
     NSLog(@"TRTC onAudioRouteChanged %@ -> %@", @(fromRoute), @(route));
-    [self sendEventWithName:@"onAudioRouteChanged" body:@{@"newRoute":@(route),@"oldRoute":@(fromRoute)}];
+    [self sendEventWithName:@"onAudioRouteChanged" body:@{
+        @"newRoute": @(route),
+        @"oldRoute": @(fromRoute),
+    }];
 }
 
 - (void)onUserVoiceVolume:(NSArray<TRTCVolumeInfo *> *)userVolumes totalVolume:(NSInteger)totalVolume {
@@ -855,13 +883,13 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
         for (TRTCVolumeInfo* vol in userVolumes) {
             [volumes addObject:@{
                 @"userId": vol.userId ?: @"",
-                @"volume": @(vol.volume)
+                @"volume": @(vol.volume),
             }];
         }
     }
     [self sendEventWithName:@"onUserVoiceVolume" body:@{
         @"userVolumes": volumes,
-        @"totalVolume": @(totalVolume)
+        @"totalVolume": @(totalVolume),
     }];
 }
 
@@ -878,7 +906,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onRecvSEIMsg:(NSString *)userId message:(NSData*)message {
     [self sendEventWithName:@"onRecvSEIMsg" body:@{
         @"userId": userId ?: @"",
-        @"message": message? [message base64EncodedStringWithOptions:0]: @""
+        @"message": message? [message base64EncodedStringWithOptions:0]: @"",
     }];
 }
 
@@ -887,7 +915,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSLog(@"onSetMixTranscodingConfig err:%d errMsg:%@", err, errMsg);
     [self sendEventWithName:@"onSetMixTranscodingConfig" body:@{
         @"err": @(err),
-        @"errMsg": errMsg ?: @""
+        @"errMsg": errMsg ?: @"",
     }];
 }
 
@@ -895,7 +923,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onAudioEffectFinished:(int)effectId code:(int)code {
     [self sendEventWithName:@"onAudioEffectFinished" body:@{
         @"effectId": @(effectId),
-        @"code": @(code)
+        @"code": @(code),
     }];
 }
 
