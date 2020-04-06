@@ -28,7 +28,6 @@ static NSString *selfUserId;
 
 RCT_EXPORT_MODULE()
 
-
 + (NSString *)getSelfUserId {
     return selfUserId;
 }
@@ -37,7 +36,7 @@ RCT_EXPORT_MODULE()
     return mFrontCamera;
 }
 
-+ (id)allocWithZone:(NSZone *)zone {
++ (instancetype)allocWithZone:(NSZone *)zone {
     static RNTrtc *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -48,7 +47,11 @@ RCT_EXPORT_MODULE()
 
 - (NSArray<NSString *> *)supportedEvents
 {
-    return @[@"onWarning",
+    return @[@"onCaptureAudioFrame",
+             @"onPlayAudioFrame",
+             @"onMixedPlayAudioFrame",
+             @"onLog"
+             @"onWarning",
              @"onError",
              @"onEnterRoom",
              @"onExitRoom",
@@ -104,11 +107,13 @@ RCT_EXPORT_METHOD(creatUserSig:(NSInteger)sdkAppId secretKey:(NSString *) secret
 
 RCT_EXPORT_METHOD(enableScreenOn)
 {
+    NSLog(@"enableScreenOn");
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 
 RCT_EXPORT_METHOD(disableScreenOn)
 {
+    NSLog(@"disableScreenOn");
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
 
@@ -139,7 +144,7 @@ RCT_EXPORT_METHOD(destroySharedInstance)
 }
 
 #pragma mark 房间相关接口函数
-RCT_EXPORT_METHOD(enterRoom:(NSDictionary *) data scene:(NSInteger) scene )
+RCT_EXPORT_METHOD(enterRoom:(NSDictionary *)data scene:(NSInteger)scene)
 {
     NSLog(@"enterRoom");
     // TRTC相关参数设置
@@ -223,44 +228,40 @@ RCT_EXPORT_METHOD(stopPublishCDNStream)
 RCT_EXPORT_METHOD(setMixTranscodingConfig:(NSDictionary *) config )
 {
     NSLog(@"setMixTranscodingConfig");
-//    TRTCTranscodingConfig *transConfig=[[TRTCTranscodingConfig alloc] init];
-//    transConfig.appId = [config[@"appId"] integerValue];
-//    transConfig.bizId = [config[@"bizId"] integerValue];
-//    transConfig.audioBitrate = [config[@"audioBitrate"] integerValue];
-//    transConfig.audioChannels = [config[@"audioChannels"] integerValue];
-//    transConfig.audioSampleRate = [config[@"audioSampleRate"] integerValue];
-//    transConfig.backgroundColor = [config[@"backgroundColor"] integerValue];
-//    transConfig.mode = [config[@"mode"] integerValue];
-//    transConfig.videoBitrate = [config[@"videoBitrate"] integerValue];
-//    transConfig.videoFramerate = [config[@"videoFramerate"] integerValue];
-//    transConfig.videoGOP = [config[@"videoGOP"] integerValue];
-//    transConfig.videoHeight = [config[@"videoHeight"] integerValue];
-//    transConfig.videoWidth = [config[@"videoWidth"] integerValue];
-//
-//
-//    NSArray *temp=config[@"mixUsers"];
-//      int count = temp.count;//减少调用次数
-//    NSMutableArray *array=[[NSMutableArray alloc] initWithCapacity:count];
-//
-//
-//    for( int i=0; i<count; i++){
-//        NSDictionary *item=[array objectAtIndex:i];
-//        TRTCMixUser *user=[[TRTCMixUser alloc] init];
-//        user.userId=item[@"userId"];
-//        user.roomID=item[@"roomId"];
-//        user.zOrder=[item[@"zOrder"] integerValue];
-//        user.streamType=[item[@"streamType"] integerValue];
-//        user.pureAudio=[item[@"pureAudio"] boolValue];
-//
-//        int width=[item[@"width"] integerValue];
-//        int height=[item[@"height"] integerValue];
-//        int x=[item[@"x"] integerValue];
-//        int y=[item[@"y"] integerValue];
-//        user.rect=CGRectMake(x,y,width,height);
+//    TRTCTranscodingConfig *transConfig = [[TRTCTranscodingConfig alloc] init];
+//    transConfig.appId               = [config[@"appId"] integerValue];
+//    transConfig.bizId               = [config[@"bizId"] integerValue];
+//    transConfig.audioBitrate        = [config[@"audioBitrate"] integerValue];
+//    transConfig.audioChannels       = [config[@"audioChannels"] integerValue];
+//    transConfig.audioSampleRate     = [config[@"audioSampleRate"] integerValue];
+//    transConfig.backgroundColor     = [config[@"backgroundColor"] integerValue];
+//    transConfig.mode                = [config[@"mode"] integerValue];
+//    transConfig.videoBitrate        = [config[@"videoBitrate"] integerValue];
+//    transConfig.videoFramerate      = [config[@"videoFramerate"] integerValue];
+//    transConfig.videoGOP            = [config[@"videoGOP"] integerValue];
+//    transConfig.videoHeight         = [config[@"videoHeight"] integerValue];
+//    transConfig.videoWidth          = [config[@"videoWidth"] integerValue];
+//    
+//    NSArray *temp = config[@"mixUsers"];
+//    int count = temp.count;//减少调用次数
+//    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:count];
+//    for (int i=0; i<count; i++) {
+//        NSDictionary *item          = [array objectAtIndex:i];
+//        TRTCMixUser *user           = [[TRTCMixUser alloc] init];
+//        user.userId                 = item[@"userId"];
+//        user.roomID                 = item[@"roomId"];
+//        user.zOrder                 = [item[@"zOrder"] integerValue];
+//        user.streamType             = [item[@"streamType"] integerValue];
+//        user.pureAudio              = [item[@"pureAudio"] boolValue];
+//        
+//        int width                   = [item[@"width"] integerValue];
+//        int height                  = [item[@"height"] integerValue];
+//        int x                       = [item[@"x"] integerValue];
+//        int y                       = [item[@"y"] integerValue];
+//        user.rect                   = CGRectMake(x,y,width,height);
 //        [array replaceObjectAtIndex:i withObject:user];
 //    }
 //    transConfig.mixUsers = array;
-//
 //    [trtcCloud setMixTranscodingConfig:transConfig];
 }
 
@@ -609,13 +610,283 @@ RCT_EXPORT_METHOD(stopScreenRecord:(RCTPromiseResolveBlock)resolve rejecter:(RCT
 }
 
 #pragma mark 音频设备相关接口
+/**
+(NSArray< TRTCMediaDeviceInfo * > *)     - getMicDevicesList
+(TRTCMediaDeviceInfo *)     - getCurrentMicDevice
+(int)     - setCurrentMicDevice
+(float)     - getCurrentMicDeviceVolume
+(void)     - setCurrentMicDeviceVolume
+(NSArray< TRTCMediaDeviceInfo * > *)     - getSpeakerDevicesList
+(TRTCMediaDeviceInfo *)     - getCurrentSpeakerDevice
+(int)     - setCurrentSpeakerDevice
+(float)     - getCurrentSpeakerDeviceVolume
+(int)     - setCurrentSpeakerDeviceVolume
+ */
+RCT_EXPORT_METHOD(getMicDevicesList:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    NSArray <TRTCMediaDeviceInfo*>*devices = [trtcCloud getMicDevicesList];
+    NSMutableArray *devicesList = [[NSMutableArray alloc] initWithCapacity:devices.count];
+    for (TRTCMediaDeviceInfo *device in devices) {
+        [devicesList addObject:@{
+            
+        }];
+    }
+    resolve(devicesList);
+}
+
+RCT_EXPORT_METHOD(getCurrentMicDevice:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    TRTCMediaDeviceInfo *device = [trtcCloud getCurrentMicDevice];
+    resolve(devive);
+}
+
+RCT_EXPORT_METHOD(setCurrentMicDevice:deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    int result = [trtcCloud setCurrentMicDevice:deviceId];
+    resolve(@(result));
+}
+
+RCT_EXPORT_METHOD(getCurrentMicDeviceVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    float volume = [trtcCloud getCurrentMicDeviceVolume];
+    resolve(@(volume));
+}
+
+RCT_EXPORT_METHOD(setCurrentMicDeviceVolume:(NSInteger)volume resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    [trtcCloud setCurrentMicDeviceVolume:volume];
+    resolve(@(1));
+}
+
+RCT_EXPORT_METHOD(getSpeakerDevicesList:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    NSArray <TRTCMediaDeviceInfo*>*devices = [trtcCloud getSpeakerDevicesList];
+    NSMutableArray *devicesList = [[NSMutableArray alloc] initWithCapacity:devices.count];
+    for (TRTCMediaDeviceInfo *device in devices) {
+        [devicesList addObject:@{
+            
+        }];
+    }
+    resolve(devicesList);
+}
+
+RCT_EXPORT_METHOD(getCurrentSpeakerDevice:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    TRTCMediaDeviceInfo *device = [trtcCloud getCurrentSpeakerDevice];
+    resolve(devive);
+}
+
+RCT_EXPORT_METHOD(setCurrentSpeakerDevice:deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    int result = [trtcCloud setCurrentSpeakerDevice:deviceId];
+    resolve(@(result));
+}
+
+RCT_EXPORT_METHOD(getCurrentSpeakerDeviceVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    float volume = [trtcCloud getCurrentSpeakerDeviceVolume];
+    resolve(@(volume));
+}
+
+RCT_EXPORT_METHOD(setCurrentSpeakerDeviceVolume:(NSInteger)volume resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    [trtcCloud setCurrentSpeakerDeviceVolume:volume];
+    resolve(@(1));
+}
+
+
 #pragma mark 美颜滤镜相关接口函数
 #pragma mark 辅流相关接口函数(MAC)
 #pragma mark 自定义采集和渲染
+/**
+ (void)     - enableCustomVideoCapture
+(void)     - sendCustomVideoData
+(int)     - setLocalVideoRenderDelegate
+(int)     - setRemoteVideoRenderDelegate
+(void)     - enableCustomAudioCapture
+(void)     - sendCustomAudioData
+(void)     - setAudioFrameDelegate
+ */
+RCT_EXPORT_METHOD(enableCustomVideoCapture) {
+    NSLog(@"enableCustomVideoCapture");
+}
+
+RCT_EXPORT_METHOD(sendCustomVideoData) {
+    NSLog(@"sendCustomVideoData");
+}
+
+RCT_EXPORT_METHOD(setLocalVideoRenderDelegate) {
+    NSLog(@"setLocalVideoRenderDelegate");
+}
+
+RCT_EXPORT_METHOD(setRemoteVideoRenderDelegate) {
+    NSLog(@"setRemoteVideoRenderDelegate");
+}
+
+RCT_EXPORT_METHOD(enableCustomAudioCapture) {
+    NSLog(@"enableCustomAudioCapture");
+}
+
+RCT_EXPORT_METHOD(sendCustomAudioData) {
+    NSLog(@"sendCustomAudioData");
+}
+
+RCT_EXPORT_METHOD(setAudioFrameDelegate) {
+    NSLog(@"setAudioFrameDelegate");
+}
+
 #pragma mark 自定义消息发送
+/**
+(BOOL)     - sendCustomCmdMsg
+(BOOL)     - sendSEIMsg
+ */
+RCT_EXPORT_METHOD(sendCustomCmdMsg) {
+    NSLog(@"sendCustomCmdMsg");
+}
+
+RCT_EXPORT_METHOD(sendSEIMsg) {
+    NSLog(@"sendSEIMsg");
+}
+
 #pragma mark 背景混音相关接口函数
+/**
+(void)     - playBGM
+(void)     - stopBGM
+(void)     - pauseBGM
+(void)     - resumeBGM
+(NSInteger)     - getBGMDuration
+(int)     - setBGMPosition
+(void)     - setBGMVolume
+(void)     - setBGMPlayoutVolume
+(void)     - setBGMPublishVolume
+(void)     - setReverbType
+(void)     - setVoiceChangerType
+ */
+RCT_EXPORT_METHOD(playBGM) {
+    NSLog(@"playBGM");
+}
+
+RCT_EXPORT_METHOD(stopBGM) {
+    NSLog(@"stopBGM");
+}
+
+RCT_EXPORT_METHOD(pauseBGM) {
+    NSLog(@"pauseBGM");
+}
+
+RCT_EXPORT_METHOD(resumeBGM) {
+    NSLog(@"resumeBGM");
+}
+
+RCT_EXPORT_METHOD(getBGMDuration) {
+    NSLog(@"getBGMDuration");
+}
+
+RCT_EXPORT_METHOD(setBGMPosition) {
+    NSLog(@"setBGMPosition");
+}
+
+RCT_EXPORT_METHOD(setBGMVolume) {
+    NSLog(@"setBGMVolume");
+}
+
+RCT_EXPORT_METHOD(setBGMPlayoutVolume) {
+    NSLog(@"setBGMPlayoutVolume");
+}
+
+RCT_EXPORT_METHOD(setBGMPublishVolume) {
+    NSLog(@"setBGMPublishVolume");
+}
+
+RCT_EXPORT_METHOD(setReverbType) {
+    NSLog(@"setReverbType");
+}
+
+RCT_EXPORT_METHOD(setVoiceChangeType) {
+    NSLog(@"setVoiceChangeType");
+}
+
 #pragma mark 音效相关接口函数
+/**
+(void)     - playAudioEffect
+(void)     - setAudioEffectVolume
+(void)     - stopAudioEffect
+(void)     - stopAllAudioEffects
+(void)     - setAllAudioEffectsVolume
+(void)     - pauseAudioEffect
+(void)     - resumeAudioEffect
+ */
+RCT_EXPORT_METHOD(playAudioEffect) {
+    NSLog(@"playAudioEffect");
+}
+
+RCT_EXPORT_METHOD(setAudioEffectVolume) {
+    NSLog(@"setAudioEffectVolume");
+}
+
+RCT_EXPORT_METHOD(stopAudioEffect) {
+    NSLog(@"stopAudioEffect");
+}
+
+RCT_EXPORT_METHOD(stopAllAudioEffects) {
+    NSLog(@"stopAllAudioEffects");
+}
+
+RCT_EXPORT_METHOD(setAllAudioEffectsVolume) {
+    NSLog(@"setAllAudioEffectsVolume");
+}
+
+RCT_EXPORT_METHOD(pauseAudioEffect) {
+    NSLog(@"pauseAudioEffect");
+}
+
+RCT_EXPORT_METHOD(resumeAudioEffect) {
+    NSLog(@"resumeAudioEffect");
+}
+
 #pragma mark 设备和网络测试
+/**
+(void)     - startSpeedTest
+(void)     - stopSpeedTest
+(void)     - startCameraDeviceTestInView
+(void)     - stopCameraDeviceTest
+(void)     - startMicDeviceTest
+(void)     - stopMicDeviceTest
+(void)     - startSpeakerDeviceTest
+(void)     - stopSpeakerDeviceTest
+ */
+RCT_EXPORT_METHOD(startSpeedTest) {
+    NSLog(@"startSpeedTest");
+}
+
+RCT_EXPORT_METHOD(stopSpeedTest) {
+    NSLog(@"stopSpeedTest");
+    [trtcCloud stopSpeedTest];
+}
+
+RCT_EXPORT_METHOD(startCameraDeviceTestInView) {
+    NSLog(@"startCameraDeviceTestInView");
+}
+
+RCT_EXPORT_METHOD(startCameraDeviceTest) {
+    NSLog(@"startCameraDeviceTest");
+}
+
+RCT_EXPORT_METHOD(stopCameraDeviceTest) {
+    NSLog(@"stopCameraDeviceTest");
+    [trtcCloud stopCameraDeviceTest];
+}
+
+RCT_EXPORT_METHOD(startMicDeviceTest) {
+    NSLog(@"startMicDeviceTest");
+}
+
+RCT_EXPORT_METHOD(stopMicDeviceTest) {
+    NSLog(@"stopMicDeviceTest");
+    [trtcCloud stopMicDeviceTest];
+}
+
+RCT_EXPORT_METHOD(startSpeakerDeviceTest) {
+    NSLog(@"startSpeakerDeviceTest");
+}
+
+RCT_EXPORT_METHOD(stopSpeakerDeviceTest) {
+    NSLog(@"stopSpeakerDeviceTest");
+    [trtcCloud stopSpeakerDeviceTest];
+}
+
 #pragma mark Log 相关接口函数
 RCT_EXPORT_METHOD(getSDKVersion:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -645,30 +916,56 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 
 #pragma mark 弃用接口函数
 
-#pragma mark - TRTCLogDelegate
-- (void)onLog:(NSString *)log LogLevel:(TRTCLogLevel)level WhichModule:(NSString *)module
-{
-    NSLog(@"onLog:%@ LogLevel:%d WhichModule:%@", log, level, module);
-}
 
 #pragma mark - TRTCAudioFrameDelegate
 - (void)onCapturedAudioFrame:(TRTCAudioFrame *)frame
 {
     NSLog(@"onCapturedAudioFrame:%@", frame);
+    [self sendEventWithName:@"onCapturedAudioFrame" body:@{
+        @"data": @"",
+        @"channels": @"",
+        @"timestamp": @"",
+        @"sampleRate": @"",
+    }];
 }
 
 - (void)onPlayAudioFrame:(TRTCAudioFrame *)frame userId:(NSString *)userId
 {
     NSLog(@"onPlayAudioFrame:%@ userId:%@", frame, userId);
+    [self sendEventWithName:@"onPlayAudioFrame" body:@{
+        @"userId": userId,
+        @"data": @"",
+        @"channels": @"",
+        @"timestamp": @"",
+        @"sampleRate": @"",
+    }];
 }
 
 - (void)onMixedPlayAudioFrame:(TRTCAudioFrame *)frame
 {
     NSLog(@"onMixedPlayAudioFrame:%@", frame);
+    [self sendEventWithName:@"onMixedPlayAudioFrame" body:@{
+        @"data": @"",
+        @"channels": @"",
+        @"timestamp": @"",
+        @"sampleRate": @"",
+    }];
 }
 
-#pragma mark - TRTCCloudDelegate
+#pragma mark - TRTCLogDelegate
+- (void)onLog:(NSString *)log LogLevel:(TRTCLogLevel)level WhichModule:(NSString *)module
+{
+    NSLog(@"onLog:%@ LogLevel:%d WhichModule:%@", log, level, module);
+    [self sendEventWithName:@"onLog" body:@{
+        @"log": log,
+        @"logLevel": @(level),
+        @"module": module,
+    }];
+}
 
+
+#pragma mark - TRTCCloudDelegate
+#pragma mark 错误事件与警告事件
 /**
  * WARNING 大多是一些可以忽略的事件通知，SDK内部会启动一定的补救机制
  */
@@ -689,7 +986,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-#pragma mark - 房间事件回调
+#pragma mark 房间事件回调
 - (void)onEnterRoom:(NSInteger)elapsed {
     [self sendEventWithName:@"onEnterRoom" body:@{
         @"elapsed": @(elapsed),
@@ -724,7 +1021,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-#pragma mark - 成员时间回调
+#pragma mark 成员事件回调
 /**
  * 有新的用户加入了当前视频房间
  */
@@ -795,7 +1092,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     [self sendEventWithName:@"onSendFirstLocalAudioFrame" body:nil];
 }
 
-#pragma mark - 统计和质量回调
+#pragma mark 统计和质量回调
 - (void)onNetworkQuality:(TRTCQualityInfo *)localQuality remoteQuality:(NSArray<TRTCQualityInfo *> *)remoteQuality {
     NSObject *localQui = @{
         @"userId": @"",
@@ -868,7 +1165,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-#pragma mark - 硬件设备事件回调
+#pragma mark 硬件设备事件回调
 - (void)onAudioRouteChanged:(TRTCAudioRoute)route fromRoute:(TRTCAudioRoute)fromRoute {
     NSLog(@"TRTC onAudioRouteChanged %@ -> %@", @(fromRoute), @(route));
     [self sendEventWithName:@"onAudioRouteChanged" body:@{
@@ -893,7 +1190,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-#pragma mark - 自定义消息的接收回调
+#pragma mark 自定义消息的接收回调
 - (void)onRecvCustomCmdMsgUserId:(NSString *)userId cmdID:(NSInteger)cmdID seq:(UInt32)seq message:(NSData *)message {
     [self sendEventWithName:@"onRecvCustomCmdMsgUserId" body:@{
         @"userId": userId?: @"",
@@ -910,7 +1207,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-#pragma mark - CDN旁路转推回调
+#pragma mark CDN旁路转推回调
 - (void)onSetMixTranscodingConfig:(int)err errMsg:(NSString *)errMsg {
     NSLog(@"onSetMixTranscodingConfig err:%d errMsg:%@", err, errMsg);
     [self sendEventWithName:@"onSetMixTranscodingConfig" body:@{
@@ -919,7 +1216,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-#pragma mark - 音效回调
+#pragma mark 音效回调
 - (void)onAudioEffectFinished:(int)effectId code:(int)code {
     [self sendEventWithName:@"onAudioEffectFinished" body:@{
         @"effectId": @(effectId),
@@ -927,6 +1224,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
+#pragma mark -
 - (RNTXCloudVideoView *)findViewByUserId:(UIView *)root userId:(NSString *)userId {
     if ([root isKindOfClass:[RNTXCloudVideoView class]]) {
         RNTXCloudVideoView *cloudView = (RNTXCloudVideoView *)root;
