@@ -50,8 +50,8 @@ RCT_EXPORT_MODULE()
              @"onPlayAudioFrame",
              @"onMixedPlayAudioFrame",
              @"onLog",
-             @"onWarning",
              @"onError",
+             @"onWarning",
              @"onEnterRoom",
              @"onExitRoom",
              @"onSwitchRole",
@@ -66,14 +66,11 @@ RCT_EXPORT_MODULE()
              @"onFirstAudioFrame",
              @"onSendFirstLocalVideoFrame",
              @"onSendFirstLocalAudioFrame",
-             @"onUserEnter",
-             @"onUserExit",
              @"onNetworkQuality",
              @"onStatistics",
              @"onConnectionLost",
              @"onTryToReconnect",
              @"onConnectionRecovery",
-             @"onSpeedTest",
              @"onCameraDidReady",
              @"onMicDidReady",
              @"onAudioRouteChanged",
@@ -81,10 +78,10 @@ RCT_EXPORT_MODULE()
              @"onRecvCustomCmdMsg",
              @"onMissCustomCmdMsg",
              @"onRecvSEIMsg",
-             @"onStartPublishing",
-             @"onStopPublishing",
-             @"onStartPublishCDNStream",
-             @"onStopPublishCDNStream",
+             @"onStartPublishing", //TODO
+             @"onStopPublishing", //TODO
+             @"onStartPublishCDNStream", //TODO
+             @"onStopPublishCDNStream", //TODO
              @"onSetMixTranscodingConfig",
              @"onAudioEffectFinished",
              @"onBackgroundMusicProgress",
@@ -672,14 +669,14 @@ RCT_EXPORT_METHOD(setAudioFrameDelegate) {
 (BOOL)     - sendCustomCmdMsg
 (BOOL)     - sendSEIMsg
  */
-RCT_EXPORT_METHOD(sendCustomCmdMsg:(NSInteger)cmdId data:(NSString *)msg reliable:(BOOL)reliable ordered:(BOOL)ordered resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(sendCustomCmdMsg:(NSInteger)cmdID data:(NSString *)msg reliable:(BOOL)reliable ordered:(BOOL)ordered resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     NSLog(@"sendCustomCmdMsg");
     NSData *data = [[NSData alloc] initWithBase64EncodedString:msg options:0];
     BOOL result = [trtcCloud sendCustomCmdMsg:cmdID data:data reliable:reliable ordered:ordered];
     if (result) {
-        resolve(result);
+        resolve(@(result));
     } else {
-        reject(-1, @"sendCustomCmdMsg failed", nil);
+        reject(@"-1", @"sendCustomCmdMsg failed", nil);
     }
 }
 
@@ -688,9 +685,9 @@ RCT_EXPORT_METHOD(sendSEIMsg:(NSString *)msg repeatCount:(int)repeatCount resolv
     NSData *data = [[NSData alloc] initWithBase64EncodedString:msg options:0];
     BOOL result = [trtcCloud sendSEIMsg:data repeatCount:repeatCount];
     if (result) {
-        resolve(result);
+        resolve(@(result));
     } else {
-        reject(-1, @"sendSEIMsg failed", nil);
+        reject(@"-1", @"sendSEIMsg failed", nil);
     }
 }
 
@@ -713,7 +710,8 @@ RCT_EXPORT_METHOD(playBGM:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
     [trtcCloud playBGM:path
        withBeginNotify:^(NSInteger errCode) {
         if (errCode < 0) {
-            reject(@(errCode));
+            NSString *code = [NSString stringWithFormat:@"%d", errCode];
+            reject(code, @"playBGM failed", nil);
         } else {
             resolve(@(errCode));
         }
@@ -750,7 +748,7 @@ RCT_EXPORT_METHOD(getBGMDuration:(NSString *)path resolver:(RCTPromiseResolveBlo
     NSLog(@"getBGMDuration");
     NSInteger duration = [trtcCloud getBGMDuration:path];
     if (duration == -1) {
-        reject(-1, @"getBGMDuration failed", nil);
+        reject(@"-1", @"getBGMDuration failed", nil);
     }
     resolve(@(duration));
 }
@@ -834,15 +832,14 @@ RCT_EXPORT_METHOD(startSpeedTest:(uint32_t)sdkAppId userId:(NSString *)userId us
                        userId:userId
                       userSig:userSig
                    completion:^(TRTCSpeedTestResult* result, NSInteger completedCount, NSInteger totalCount) {
-        NSDictionary *result = @{
-            @"completeCount": @(completeCount),
+        [self sendEventWithName:@"onSpeedTestProgress" body:@{
+            @"completedCount": @(completedCount),
             @"totalCount": @(totalCount),
             @"upLostRate": @(result.upLostRate),
             @"downLostRate": @(result.downLostRate),
             @"rtt": @(result.rtt),
             @"quality": @(result.quality),
-        };
-        [self sendEventWithName:@"onSpeedTestProgress" body:result];
+        }];
     }];
 }
 
@@ -885,34 +882,37 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 - (void)onCapturedAudioFrame:(TRTCAudioFrame *)frame
 {
     NSLog(@"onCapturedAudioFrame:%@", frame);
+    NSString *base64String = [frame.data base64EncodedStringWithOptions:0];
     [self sendEventWithName:@"onCapturedAudioFrame" body:@{
-        @"data": @"",
-        @"channels": @"",
-        @"timestamp": @"",
-        @"sampleRate": @"",
+        @"data": base64String ?: @"",
+        @"channels": @(frame.channels),
+        @"timestamp": @(frame.timestamp),
+        @"sampleRate": @(frame.sampleRate),
     }];
 }
 
 - (void)onPlayAudioFrame:(TRTCAudioFrame *)frame userId:(NSString *)userId
 {
     NSLog(@"onPlayAudioFrame:%@ userId:%@", frame, userId);
+    NSString *base64String = [frame.data base64EncodedStringWithOptions:0];
     [self sendEventWithName:@"onPlayAudioFrame" body:@{
-        @"userId": userId,
-        @"data": @"",
-        @"channels": @"",
-        @"timestamp": @"",
-        @"sampleRate": @"",
+        @"userId": userId ?: @"",
+        @"data": base64String ?: @"",
+        @"channels": @(frame.channels),
+        @"timestamp": @(frame.timestamp),
+        @"sampleRate": @(frame.sampleRate),
     }];
 }
 
 - (void)onMixedPlayAudioFrame:(TRTCAudioFrame *)frame
 {
     NSLog(@"onMixedPlayAudioFrame:%@", frame);
+    NSString *base64String = [frame.data base64EncodedStringWithOptions:0];
     [self sendEventWithName:@"onMixedPlayAudioFrame" body:@{
-        @"data": @"",
-        @"channels": @"",
-        @"timestamp": @"",
-        @"sampleRate": @"",
+        @"data": base64String ?: @"",
+        @"channels": @(frame.channels),
+        @"timestamp": @(frame.timestamp),
+        @"sampleRate": @(frame.sampleRate),
     }];
 }
 
@@ -921,9 +921,9 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 {
     NSLog(@"onLog:%@ LogLevel:%d WhichModule:%@", log, level, module);
     [self sendEventWithName:@"onLog" body:@{
-        @"log": log,
+        @"log": log ?: @"",
         @"logLevel": @(level),
-        @"module": module,
+        @"module": module ?: @"",
     }];
 }
 
@@ -991,7 +991,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
  */
 - (void)onRemoteUserEnterRoom:(NSString *)userId {
     [self sendEventWithName:@"onRemoteUserEnterRoom" body:@{
-        @"userId": userId,
+        @"userId": userId ?: @"",
     }];
 }
 /**
@@ -999,7 +999,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
  */
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason {
     [self sendEventWithName:@"onRemoteUserLeaveRoom" body:@{
-        @"userId": userId,
+        @"userId": userId ?: @"",
         @"reason": @(reason),
     }];
 }
@@ -1129,7 +1129,32 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
+- (void)onConnectionLost {
+    NSLog(@"onConnectionLost");
+    [self sendEventWithName:@"onConnectionLost" body:nil];
+}
+
+- (void)onTryToReconnect {
+    NSLog(@"onTryToReconnect");
+    [self sendEventWithName:@"onTryToReconnect" body:nil];
+}
+
+- (void)onConnectionRecovery {
+    NSLog(@"onConnectionRecovery");
+    [self sendEventWithName:@"onConnectionRecovery" body:nil];
+}
+
 #pragma mark 硬件设备事件回调
+- (void)onCameraDidReady {
+    NSLog(@"onCameraDidReady");
+    [self sendEventWithName:@"onCameraDidReady" body:nil];
+}
+
+- (void)onMicDidReady {
+    NSLog(@"onMicDidReady");
+    [self sendEventWithName:@"onMicDidReady" body:nil];
+}
+
 - (void)onAudioRouteChanged:(TRTCAudioRoute)route fromRoute:(TRTCAudioRoute)fromRoute {
     NSLog(@"TRTC onAudioRouteChanged %@ -> %@", @(fromRoute), @(route));
     [self sendEventWithName:@"onAudioRouteChanged" body:@{
@@ -1164,6 +1189,15 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
+- (void)onMissCustomCmdMsgUserId:(NSString *)userId cmdID:(NSInteger)cmdID errCode:(NSInteger)errCode missed:(NSInteger)missed {
+    [self sendEventWithName:@"onMissCustomCmdMsgUserId" body:@{
+        @"userId": userId ?: @"",
+        @"cmdID": @(cmdID),
+        @"errCode": @(errCode),
+        @"missed": @(missed),
+    }];
+}
+
 - (void)onRecvSEIMsg:(NSString *)userId message:(NSData*)message {
     [self sendEventWithName:@"onRecvSEIMsg" body:@{
         @"userId": userId ?: @"",
@@ -1172,6 +1206,38 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 }
 
 #pragma mark CDN旁路转推回调
+- (void)onStartPublishing:(int)err errMsg:(NSString*)errMsg {
+    NSLog(@"onStartPublishing err:%d errMsg:%@", err, errMsg);
+    [self sendEventWithName:@"onStartPublishing" body:@{
+        @"err": @(err),
+        @"errMsg": errMsg ?: @"",
+    }];
+}
+
+- (void)onStopPublishing:(int)err errMsg:(NSString*)errMsg {
+    NSLog(@"onStopPublishing err:%d errMsg:%@", err, errMsg);
+    [self sendEventWithName:@"onStopPublishing" body:@{
+        @"err": @(err),
+        @"errMsg": errMsg ?: @"",
+    }];
+}
+
+- (void)onStartPublishCDNStream:(int)err errMsg:(NSString *)errMsg {
+    NSLog(@"onStartPublishCDNStream err:%d errMsg:%@", err, errMsg);
+    [self sendEventWithName:@"onStartPublishCDNStream" body:@{
+        @"err": @(err),
+        @"errMsg": errMsg ?: @"",
+    }];
+}
+
+- (void)onStopPublishCDNStream:(int)err errMsg:(NSString *)errMsg {
+    NSLog(@"onStopPublishCDNStream err:%d errMsg:%@", err, errMsg);
+    [self sendEventWithName:@"onStopPublishCDNStream" body:@{
+        @"err": @(err),
+        @"errMsg": errMsg ?: @"",
+    }];
+}
+
 - (void)onSetMixTranscodingConfig:(int)err errMsg:(NSString *)errMsg {
     NSLog(@"onSetMixTranscodingConfig err:%d errMsg:%@", err, errMsg);
     [self sendEventWithName:@"onSetMixTranscodingConfig" body:@{
