@@ -13,6 +13,8 @@ static NSString *selfUserId;
 
 @interface RNTrtc() <TRTCCloudDelegate, TRTCLogDelegate, TRTCAudioFrameDelegate> {
     TRTCCloud *trtcCloud;
+    BOOL hasListeners;
+    BOOL logListeners;
 }
 
 @end
@@ -78,16 +80,35 @@ RCT_EXPORT_MODULE()
              @"onRecvCustomCmdMsg",
              @"onMissCustomCmdMsg",
              @"onRecvSEIMsg",
-             @"onStartPublishing", //TODO
-             @"onStopPublishing", //TODO
-             @"onStartPublishCDNStream", //TODO
-             @"onStopPublishCDNStream", //TODO
+             @"onStartPublishing",
+             @"onStopPublishing",
+             @"onStartPublishCDNStream",
+             @"onStopPublishCDNStream",
              @"onSetMixTranscodingConfig",
              @"onAudioEffectFinished",
              @"onBackgroundMusicProgress",
              @"onBackgroundMusicComplete",
              @"onSpeedTestProgress",
              ];
+}
+
+- (void)startObserving
+{
+    hasListeners = YES;
+}
+
+- (void)stopObserving
+{
+    hasListeners = NO;
+    logListeners = NO;
+}
+
+RCT_EXPORT_METHOD(addListener:(NSString *)eventName)
+{
+    [super addListener:eventName];
+    if ([eventName isEqualToString:@"onLog"]) {
+        logListeners = YES;
+    }
 }
 
 RCT_EXPORT_METHOD(setLogEnabled:(BOOL)enabled) {
@@ -234,41 +255,41 @@ RCT_EXPORT_METHOD(stopPublishCDNStream)
 RCT_EXPORT_METHOD(setMixTranscodingConfig:(NSDictionary *) config )
 {
     NSLog(@"setMixTranscodingConfig");
-//    TRTCTranscodingConfig *transConfig = [[TRTCTranscodingConfig alloc] init];
-//    transConfig.appId               = [config[@"appId"] integerValue];
-//    transConfig.bizId               = [config[@"bizId"] integerValue];
-//    transConfig.audioBitrate        = [config[@"audioBitrate"] integerValue];
-//    transConfig.audioChannels       = [config[@"audioChannels"] integerValue];
-//    transConfig.audioSampleRate     = [config[@"audioSampleRate"] integerValue];
-//    transConfig.backgroundColor     = [config[@"backgroundColor"] integerValue];
-//    transConfig.mode                = [config[@"mode"] integerValue];
-//    transConfig.videoBitrate        = [config[@"videoBitrate"] integerValue];
-//    transConfig.videoFramerate      = [config[@"videoFramerate"] integerValue];
-//    transConfig.videoGOP            = [config[@"videoGOP"] integerValue];
-//    transConfig.videoHeight         = [config[@"videoHeight"] integerValue];
-//    transConfig.videoWidth          = [config[@"videoWidth"] integerValue];
-//    
-//    NSArray *temp = config[@"mixUsers"];
-//    int count = temp.count;//减少调用次数
-//    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:count];
-//    for (int i=0; i<count; i++) {
-//        NSDictionary *item          = [array objectAtIndex:i];
-//        TRTCMixUser *user           = [[TRTCMixUser alloc] init];
-//        user.userId                 = item[@"userId"];
-//        user.roomID                 = item[@"roomId"];
-//        user.zOrder                 = [item[@"zOrder"] integerValue];
-//        user.streamType             = [item[@"streamType"] integerValue];
-//        user.pureAudio              = [item[@"pureAudio"] boolValue];
-//        
-//        int width                   = [item[@"width"] integerValue];
-//        int height                  = [item[@"height"] integerValue];
-//        int x                       = [item[@"x"] integerValue];
-//        int y                       = [item[@"y"] integerValue];
-//        user.rect                   = CGRectMake(x,y,width,height);
-//        [array replaceObjectAtIndex:i withObject:user];
-//    }
-//    transConfig.mixUsers = array;
-//    [trtcCloud setMixTranscodingConfig:transConfig];
+    TRTCTranscodingConfig *transConfig = [[TRTCTranscodingConfig alloc] init];
+    transConfig.appId               = [config[@"appId"] integerValue];
+    transConfig.bizId               = [config[@"bizId"] integerValue];
+    transConfig.audioBitrate        = [config[@"audioBitrate"] integerValue];
+    transConfig.audioChannels       = [config[@"audioChannels"] integerValue];
+    transConfig.audioSampleRate     = [config[@"audioSampleRate"] integerValue];
+    transConfig.backgroundColor     = [config[@"backgroundColor"] integerValue];
+    transConfig.mode                = [config[@"mode"] integerValue];
+    transConfig.videoBitrate        = [config[@"videoBitrate"] integerValue];
+    transConfig.videoFramerate      = [config[@"videoFramerate"] integerValue];
+    transConfig.videoGOP            = [config[@"videoGOP"] integerValue];
+    transConfig.videoHeight         = [config[@"videoHeight"] integerValue];
+    transConfig.videoWidth          = [config[@"videoWidth"] integerValue];
+    
+    NSArray *temp = config[@"mixUsers"];
+    int count = temp.count;//减少调用次数
+    NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:count];
+    for (int i=0; i<count; i++) {
+        NSDictionary *item          = [array objectAtIndex:i];
+        TRTCMixUser *user           = [[TRTCMixUser alloc] init];
+        user.userId                 = item[@"userId"];
+        user.roomID                 = item[@"roomId"];
+        user.zOrder                 = [item[@"zOrder"] integerValue];
+        user.streamType             = [item[@"streamType"] integerValue];
+        user.pureAudio              = [item[@"pureAudio"] boolValue];
+        
+        int width                   = [item[@"width"] integerValue];
+        int height                  = [item[@"height"] integerValue];
+        int x                       = [item[@"x"] integerValue];
+        int y                       = [item[@"y"] integerValue];
+        user.rect                   = CGRectMake(x,y,width,height);
+        [array replaceObjectAtIndex:i withObject:user];
+    }
+    transConfig.mixUsers = array;
+    [trtcCloud setMixTranscodingConfig:transConfig];
 }
 
 #pragma mark 视频相关接口
@@ -919,6 +940,9 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 #pragma mark - TRTCLogDelegate
 - (void)onLog:(NSString *)log LogLevel:(TRTCLogLevel)level WhichModule:(NSString *)module
 {
+    if (!logListeners) {
+        return;
+    }
     NSLog(@"onLog:%@ LogLevel:%d WhichModule:%@", log, level, module);
     [self sendEventWithName:@"onLog" body:@{
         @"log": log ?: @"",
