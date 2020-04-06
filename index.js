@@ -17,6 +17,9 @@ class TXCloudVideoView extends React.Component {
 }
 
 export default {
+    setLogEnabled(enabled) {
+        RNModule.setLogEnabled(enabled);
+    },
     creatUserSig(sdkAppId, secretKey, userId) {
         return RNModule.creatUserSig(sdkAppId, secretKey, userId)
     },

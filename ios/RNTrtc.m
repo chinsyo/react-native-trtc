@@ -91,6 +91,14 @@ RCT_EXPORT_MODULE()
              ];
 }
 
+RCT_EXPORT_METHOD(setLogEnabled:(BOOL)enabled) {
+    if (enabled) {
+        [TRTCCloud setLogDelegate:self];
+    } else {
+        [TRTCCloud setLogDelegate:nil];
+    }
+}
+
 RCT_EXPORT_METHOD(creatUserSig:(NSInteger)sdkAppId secretKey:(NSString *) secretKey userId:(NSString *) userId  resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     NSLog(@"creatUserSig sdkAppId:%d secretKey:%@", sdkAppId, secretKey);
@@ -124,7 +132,6 @@ RCT_EXPORT_METHOD(sharedInstance:(RCTPromiseResolveBlock)resolve rejecter:(RCTPr
     NSLog(@"sharedInstance ");
     @try
     {
-        [TRTCCloud setLogDelegate:self];
         trtcCloud = [TRTCCloud sharedInstance];
         trtcCloud.delegate = self;
         [trtcCloud setAudioFrameDelegate:self];
