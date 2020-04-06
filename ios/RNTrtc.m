@@ -1,6 +1,7 @@
 
 #import "RNTrtc.h"
 #import "GenerateSigHelper.h"
+#import "RNTXCloudVideoView.h"
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDelegate.h>
@@ -263,6 +264,178 @@ RCT_EXPORT_METHOD(setMixTranscodingConfig:(NSDictionary *) config )
 //    [trtcCloud setMixTranscodingConfig:transConfig];
 }
 
+#pragma mark 视频相关接口
+RCT_EXPORT_METHOD(startLocalPreview:(BOOL)frontCamera){
+    NSLog(@"startLocalPreview:%u", frontCamera);
+    mFrontCamera = frontCamera;
+    id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
+    UIView *rootView = appDelegate.window.rootViewController.view;
+    RNTXCloudVideoView *cloudView = [self findViewByUserId:rootView userId:selfUserId];
+    if (cloudView) {
+        [trtcCloud startLocalPreview:frontCamera view:cloudView];
+    }
+}
+
+RCT_EXPORT_METHOD(stopLocalPreview)
+{
+    NSLog(@"stopLocalPreview");
+    [trtcCloud stopLocalPreview ];
+}
+
+RCT_EXPORT_METHOD(muteLocalVideo:(BOOL) mute)
+{
+    NSLog(@"muteLocalVideo");
+    [trtcCloud muteLocalVideo:mute ];
+}
+
+RCT_EXPORT_METHOD(startRemoteView:(NSString *) userId)
+{
+    NSLog(@"startRemoteView");
+    id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
+    UIView *rootView = appDelegate.window.rootViewController.view;
+    RNTXCloudVideoView *cloudView = [self findViewByUserId:rootView userId:selfUserId];
+    if (cloudView) {
+        [trtcCloud startRemoteView:userId view:cloudView];
+    }
+}
+
+
+RCT_EXPORT_METHOD(stopRemoteView:(NSString *) userId)
+{
+    NSLog(@"stopRemoteView");
+    [trtcCloud stopRemoteView:userId ];
+}
+
+
+RCT_EXPORT_METHOD(stopAllRemoteView)
+{
+    NSLog(@"stopAllRemoteView");
+    [trtcCloud stopAllRemoteView ];
+    
+}
+
+RCT_EXPORT_METHOD(muteRemoteVideoStream:(NSString *) userId mute:(BOOL) mute)
+{
+    NSLog(@"muteRemoteVideoStream");
+    [trtcCloud muteRemoteVideoStream:userId  mute:mute];
+}
+
+RCT_EXPORT_METHOD(muteAllRemoteVideoStreams:(BOOL) mute)
+{
+    NSLog(@"muteAllRemoteVideoStreams");
+    [trtcCloud muteAllRemoteVideoStreams:mute];
+}
+
+RCT_EXPORT_METHOD(setVideoEncoderParam:(NSDictionary *) data)
+{
+    NSLog(@"setVideoEncoderParam");
+    TRTCVideoEncParam *encParam = [[TRTCVideoEncParam alloc] init];
+    encParam.videoResolution    = [data[@"videoResolution"] integerValue];
+    encParam.enableAdjustRes    = [data[@"enableAdjustRes"] boolValue];
+    encParam.videoBitrate       = [data[@"videoBitrate"] integerValue];
+    encParam.videoFps           = [data[@"videoFps"] integerValue];
+    encParam.resMode            = [data[@"videoResolutionMode"] integerValue];
+    [trtcCloud setVideoEncoderParam:encParam];
+}
+
+RCT_EXPORT_METHOD(setNetworkQosParam:(NSDictionary *) data)
+{  NSLog(@"setNetworkQosParam");
+    TRTCNetworkQosParam *qosParam   = [[TRTCNetworkQosParam alloc]init];
+    qosParam.preference             = [data[@"preference"] integerValue];
+    qosParam.controlMode            = [data[@"controlMode"] integerValue];
+    [trtcCloud setNetworkQosParam:qosParam];
+}
+
+RCT_EXPORT_METHOD(setLocalViewFillMode:(NSInteger) mode)
+{
+    NSLog(@"setLocalViewFillMode");
+    [trtcCloud setLocalViewFillMode:mode];
+}
+
+RCT_EXPORT_METHOD(setRemoteViewFillMode:(NSString *) userId mode:(NSInteger) mode)
+{
+    NSLog(@"setRemoteViewFillMode");
+    [trtcCloud setRemoteViewFillMode:userId mode:mode];
+}
+
+RCT_EXPORT_METHOD(setLocalViewRotation:(NSInteger) rotation)
+{
+    NSLog(@"setLocalViewRotation");
+    [trtcCloud setLocalViewRotation:rotation];
+}
+
+RCT_EXPORT_METHOD(setRemoteViewRotation:(NSString *) userId rotation:(NSInteger) rotation)
+{
+    NSLog(@"setRemoteViewRotation");
+    [trtcCloud setRemoteViewRotation:userId rotation:rotation];
+}
+
+
+RCT_EXPORT_METHOD(setVideoEncoderRotation:(NSInteger) rotation)
+{
+    NSLog(@"setVideoEncoderRotation");
+    [trtcCloud setVideoEncoderRotation:rotation];
+}
+
+RCT_EXPORT_METHOD(setLocalViewMirror:(NSInteger) mirrorType)
+{
+    NSLog(@"setLocalViewMirror");
+    [trtcCloud setLocalViewMirror:mirrorType];
+}
+
+RCT_EXPORT_METHOD(setVideoEncoderMirror:(BOOL) mirror)
+{
+    NSLog(@"setVideoEncoderMirror");
+    [trtcCloud setVideoEncoderMirror:mirror];
+}
+
+RCT_EXPORT_METHOD(setGSensorMode:(NSInteger) mode)
+{
+    NSLog(@"setGSensorMode");
+    [trtcCloud setGSensorMode:mode];
+}
+
+RCT_EXPORT_METHOD(enableEncSmallVideoStream:(BOOL) enable  smallVideoEncParam:(NSDictionary *) smallVideoEncParam resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
+{
+    NSLog(@"enableEncSmallVideoStream");
+    TRTCVideoEncParam *encParam = [[TRTCVideoEncParam alloc] init];
+    encParam.videoResolution    = [smallVideoEncParam[@"videoResolution"] integerValue];
+    encParam.enableAdjustRes    = [smallVideoEncParam[@"enableAdjustRes"] boolValue];
+    encParam.videoBitrate       = [smallVideoEncParam[@"videoBitrate"] integerValue];
+    encParam.videoFps           = [smallVideoEncParam[@"videoFps"] integerValue];
+    encParam.resMode            = [smallVideoEncParam[@"videoResolutionMode"] integerValue];
+    int result = [trtcCloud enableEncSmallVideoStream:enable withQuality:encParam];
+    resolve(@(result));
+}
+
+RCT_EXPORT_METHOD(setRemoteVideoStreamType:(NSString *) userId  streamType:(NSInteger) streamType resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
+{
+    NSLog(@"setRemoteVideoStreamType");
+    [trtcCloud setRemoteVideoStreamType:userId type:streamType];
+    resolve(@(1));
+}
+
+RCT_EXPORT_METHOD(setPriorRemoteVideoStreamType:(NSInteger) streamType   resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
+{
+    NSLog(@"setPriorRemoteVideoStreamType");
+    [trtcCloud setPriorRemoteVideoStreamType:streamType];
+    resolve(@(1));
+}
+
+RCT_EXPORT_METHOD(snapshotVideo:(NSString *)userId  streamType:(NSInteger)streamType resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject )
+{
+    NSLog(@"snapshotVideo");
+    [trtcCloud snapshotVideo:userId
+                        type:streamType
+             completionBlock:^(TXImage *image) {
+                 if (image) {
+                     NSData *imageData = UIImagePNGRepresentation(image);
+                     NSString *base64 = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+                     resolve(base64);
+                 }
+             }
+     ];
+}
 
 
 #pragma mark 音频相关接口函数
@@ -378,7 +551,7 @@ RCT_EXPORT_METHOD(switchCamera)
 RCT_EXPORT_METHOD(isCameraZoomSupported:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
 {
     NSLog(@"isCameraZoomSupported");
-    BOOL result=  [trtcCloud isCameraZoomSupported];
+    BOOL result = [trtcCloud isCameraZoomSupported];
     resolve(@(result));
 }
 
@@ -391,14 +564,14 @@ RCT_EXPORT_METHOD(setZoom:(NSInteger) distance)
 RCT_EXPORT_METHOD(isCameraTorchSupported:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
 {
     NSLog(@"isCameraTorchSupported");
-    BOOL result=  [trtcCloud isCameraTorchSupported];
+    BOOL result = [trtcCloud isCameraTorchSupported];
     resolve(@(result));
 }
 
 RCT_EXPORT_METHOD(enableTorch:(BOOL ) enable  resolver:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
 {
     NSLog(@"enableTorch");
-    BOOL result=  [trtcCloud enbaleTorch:enable];
+    BOOL result = [trtcCloud enbaleTorch:enable];
     resolve(@(result));
 }
 
@@ -420,7 +593,7 @@ RCT_EXPORT_METHOD(setFocusPosition:(NSInteger) x y:(NSInteger)y )
 RCT_EXPORT_METHOD(isCameraAutoFocusFaceModeSupported:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject )
 {
     NSLog(@"isCameraAutoFocusFaceModeSupported");
-    BOOL result=  [trtcCloud isCameraAutoFocusFaceModeSupported];
+    BOOL result = [trtcCloud isCameraAutoFocusFaceModeSupported];
     resolve(@(result));
 }
 
@@ -428,7 +601,6 @@ RCT_EXPORT_METHOD(isCameraAutoFocusFaceModeSupported:(RCTPromiseResolveBlock) re
 RCT_EXPORT_METHOD(startScreenRecord)
 {
     NSLog(@"startScreenRecord");
-    
 }
 
 RCT_EXPORT_METHOD(stopScreenRecord:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
@@ -501,36 +673,55 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
  * WARNING 大多是一些可以忽略的事件通知，SDK内部会启动一定的补救机制
  */
 - (void)onWarning:(TXLiteAVWarning)warningCode warningMsg:(NSString *)warningMsg {
-    [self sendEventWithName:@"onWarning" body:@{@"warningCode": @(warningCode), @"warningMsg": warningMsg ?: @""}];
+    [self sendEventWithName:@"onWarning" body:@{
+        @"warningCode": @(warningCode),
+        @"warningMsg": warningMsg ?: @""
+    }];
 }
 
 /**
  * 大多是不可恢复的错误，需要通过 UI 提示用户
  */
 - (void)onError:(TXLiteAVError)errCode errMsg:(NSString *)errMsg extInfo:(nullable NSDictionary *)extInfo {
-    [self sendEventWithName:@"onError" body:@{@"errCode": @(errCode), @"errMsg": errMsg ?: @""}];
+    [self sendEventWithName:@"onError" body:@{
+        @"errCode": @(errCode),
+        @"errMsg": errMsg ?: @""
+    }];
 }
 
 #pragma mark - 房间事件回调
 - (void)onEnterRoom:(NSInteger)elapsed {
-    [self sendEventWithName:@"onEnterRoom" body:@{@"elapsed": @(elapsed)}];
+    [self sendEventWithName:@"onEnterRoom" body:@{
+        @"elapsed": @(elapsed)
+    }];
 }
 
 
 - (void)onExitRoom:(NSInteger)reason {
-    [self sendEventWithName:@"onExitRoom" body:@{@"reason": @(reason)}];
+    [self sendEventWithName:@"onExitRoom" body:@{
+        @"reason": @(reason)
+    }];
 }
 
 - (void)onSwitchRole:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
-    [self sendEventWithName:@"onSwitchRole" body:@{@"errCode":@(errCode), @"errMsg":errMsg ?: @""}];
+    [self sendEventWithName:@"onSwitchRole" body:@{
+        @"errCode": @(errCode),
+        @"errMsg": errMsg ?: @""
+    }];
 }
 
 - (void)onConnectOtherRoom:(NSString *)userId errCode:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
-    [self sendEventWithName:@"onConnectOtherRoom" body:@{@"errCode":@(errCode),@"errMsg":errMsg ?: @""}];
+    [self sendEventWithName:@"onConnectOtherRoom" body:@{
+        @"errCode": @(errCode),
+        @"errMsg": errMsg ?: @""
+    }];
 }
 
 - (void)onDisconnectOtherRoom:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
-    [self sendEventWithName:@"onDisconnectOtherRoom" body:@{@"errCode": @(errCode), @"errMsg": errMsg ?: @""}];
+    [self sendEventWithName:@"onDisconnectOtherRoom" body:@{
+        @"errCode": @(errCode),
+        @"errMsg": errMsg ?: @""
+    }];
 }
 
 #pragma mark - 成员时间回调
@@ -538,34 +729,53 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
  * 有新的用户加入了当前视频房间
  */
 - (void)onRemoteUserEnterRoom:(NSString *)userId {
-    [self sendEventWithName:@"onRemoteUserEnterRoom" body:@{@"userId":userId}];
+    [self sendEventWithName:@"onRemoteUserEnterRoom" body:@{
+        @"userId": userId
+    }];
 }
 /**
  * 有用户离开了当前视频房间
  */
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason {
-    [self sendEventWithName:@"onRemoteUserLeaveRoom" body:@{@"userId":userId,@"reason":@(reason)}];
+    [self sendEventWithName:@"onRemoteUserLeaveRoom" body:@{
+        @"userId": userId,
+        @"reason": @(reason)
+    }];
 }
 
 - (void)onUserAudioAvailable:(NSString *)userId available:(BOOL)available {
     NSLog(@"onUserAudioAvailable:userId:%@ available:%u", userId, available);
-    [self sendEventWithName:@"onUserAudioAvailable" body:@{@"userId":userId?userId:@"",@"available":@(available)}];
+    [self sendEventWithName:@"onUserAudioAvailable" body:@{
+        @"userId": userId ?: @"",
+        @"available": @(available)
+    }];
 }
 
 - (void)onUserVideoAvailable:(NSString *)userId available:(BOOL)available {
     NSLog(@"onUserVideoAvailable:userId:%@ available==:%u", userId, available);
-    [self sendEventWithName:@"onUserVideoAvailable" body:@{@"userId":userId?userId:@"",@"available":@(available)}];
+    [self sendEventWithName:@"onUserVideoAvailable" body:@{
+        @"userId": userId ?: @"",
+        @"available": @(available)
+    }];
 }
 
 - (void)onUserSubStreamAvailable:(NSString *)userId available:(BOOL)available {
     NSLog(@"onUserSubStreamAvailable:userId:%@ available:%u", userId, available);
-    [self sendEventWithName:@"onUserSubStreamAvailable" body:@{@"userId":userId?userId:@"",@"available":@(available)}];
+    [self sendEventWithName:@"onUserSubStreamAvailable" body:@{
+        @"userId": userId ?: @"",
+        @"available": @(available)
+    }];
 }
 
 - (void)onFirstVideoFrame:(NSString *)userId streamType:(TRTCVideoStreamType)streamType width:(int)width height:(int)height {
     NSLog(@"onFirstVideoFrame userId:%@ streamType:%@ width:%d height:%d", userId, @(streamType), width, height);
     if (userId) {
-        [self sendEventWithName:@"onFirstVideoFrame" body:@{@"userId":userId?userId:@"",@"streamType":@(streamType),@"width":@(width),@"height":@(height)}];
+        [self sendEventWithName:@"onFirstVideoFrame" body:@{
+            @"userId": userId ?: @"",
+            @"streamType": @(streamType),
+            @"width": @(width),
+            @"height": @(height)
+        }];
     }
 }
 
@@ -593,15 +803,21 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSMutableArray *remoteQui = [[NSMutableArray alloc] init];
     if (remoteQuality) {
         for (TRTCQualityInfo* qualityInfo in remoteQuality) {
-            [remoteQui addObject:@{@"userId":qualityInfo.userId?qualityInfo.userId:@"",@"quality":@(qualityInfo.quality)}];
+            [remoteQui addObject:@{
+                @"userId": qualityInfo.userId ?: @"",
+                @"quality": @(qualityInfo.quality)
+            }];
         }
     }
-    [self sendEventWithName:@"onNetworkQuality" body:@{@"localQuality":localQui,@"remoteQuality":remoteQui}];
+    [self sendEventWithName:@"onNetworkQuality" body:@{
+        @"localQuality": localQui,
+        @"remoteQuality": remoteQui
+    }];
 }
 
 - (void)onStatistics:(TRTCStatistics *) statistics {
     NSMutableArray *localArray = [[NSMutableArray alloc] init];
-    if(statistics&&statistics.localStatistics){
+    if (statistics && statistics.localStatistics) {
         for (TRTCLocalStatistics* local in statistics.localStatistics) {
             [localArray addObject:@{@"width":@(local.width),@"height":@(local.height),@"frameRate":@(local.frameRate),@"videoBitrate":@(local.videoBitrate),@"audioSampleRate":@(local.audioSampleRate),@"audioBitrate":@(local.audioBitrate),@"streamType":@(local.streamType)}];
         }
@@ -614,7 +830,17 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
         }
     }
 
-    [self sendEventWithName:@"onStatistics" body:@{@"appCpu":@(statistics.appCpu),@"downLoss":@(statistics.downLoss),@"rtt":@(statistics.rtt),@"systemCpu":@(statistics.systemCpu),@"upLoss":@(statistics.upLoss),@"receiveBytes":@(statistics.receivedBytes),@"sendBytes":@(statistics.sentBytes),@"localArray":localArray,@"remoteArray":remoteArray}];
+    [self sendEventWithName:@"onStatistics" body:@{
+        @"appCpu": @(statistics.appCpu),
+        @"downLoss": @(statistics.downLoss),
+        @"rtt": @(statistics.rtt),
+        @"systemCpu": @(statistics.systemCpu),
+        @"upLoss": @(statistics.upLoss),
+        @"receiveBytes": @(statistics.receivedBytes),
+        @"sendBytes": @(statistics.sentBytes),
+        @"localArray": localArray,
+        @"remoteArray": remoteArray
+    }];
 }
 
 #pragma mark - 硬件设备事件回调
@@ -627,30 +853,67 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     NSMutableArray *volumes = [[NSMutableArray alloc] init];
     if (userVolumes) {
         for (TRTCVolumeInfo* vol in userVolumes) {
-            [volumes addObject:@{@"userId":vol.userId?vol.userId:@"",@"volume":@(vol.volume)}];
+            [volumes addObject:@{
+                @"userId": vol.userId ?: @"",
+                @"volume": @(vol.volume)
+            }];
         }
     }
-    [self sendEventWithName:@"onUserVoiceVolume" body:@{@"userVolumes":volumes,@"totalVolume":@(totalVolume)}];
+    [self sendEventWithName:@"onUserVoiceVolume" body:@{
+        @"userVolumes": volumes,
+        @"totalVolume": @(totalVolume)
+    }];
 }
 
 #pragma mark - 自定义消息的接收回调
 - (void)onRecvCustomCmdMsgUserId:(NSString *)userId cmdID:(NSInteger)cmdID seq:(UInt32)seq message:(NSData *)message {
-    [self sendEventWithName:@"onRecvCustomCmdMsgUserId" body:@{@"userId":userId?userId:@"",@"cmdID":@(cmdID),@"seq":@(seq),@"message":message?[message base64EncodedStringWithOptions:0]:@""}];
+    [self sendEventWithName:@"onRecvCustomCmdMsgUserId" body:@{
+        @"userId": userId?: @"",
+        @"cmdID": @(cmdID),
+        @"seq": @(seq),
+        @"message": message? [message base64EncodedStringWithOptions:0]: @"",
+    }];
 }
 
 - (void)onRecvSEIMsg:(NSString *)userId message:(NSData*)message {
-    [self sendEventWithName:@"onRecvSEIMsg" body:@{@"userId":userId ?: @"", @"message":message?[message base64EncodedStringWithOptions:0]:@""}];
+    [self sendEventWithName:@"onRecvSEIMsg" body:@{
+        @"userId": userId ?: @"",
+        @"message": message? [message base64EncodedStringWithOptions:0]: @""
+    }];
 }
 
 #pragma mark - CDN旁路转推回调
 - (void)onSetMixTranscodingConfig:(int)err errMsg:(NSString *)errMsg {
     NSLog(@"onSetMixTranscodingConfig err:%d errMsg:%@", err, errMsg);
-    [self sendEventWithName:@"onSetMixTranscodingConfig" body:@{@"err":@(err),@"errMsg":errMsg ?: @""}];
+    [self sendEventWithName:@"onSetMixTranscodingConfig" body:@{
+        @"err": @(err),
+        @"errMsg": errMsg ?: @""
+    }];
 }
 
 #pragma mark - 音效回调
 - (void)onAudioEffectFinished:(int)effectId code:(int)code {
-    [self sendEventWithName:@"onAudioEffectFinished" body:@{@"effectId": @(effectId), @"code": @(code)}];
+    [self sendEventWithName:@"onAudioEffectFinished" body:@{
+        @"effectId": @(effectId),
+        @"code": @(code)
+    }];
+}
+
+- (RNTXCloudVideoView *)findViewByUserId:(UIView *)root userId:(NSString *)userId {
+    if ([root isKindOfClass:[RNTXCloudVideoView class]]) {
+        RNTXCloudVideoView *cloudView = (RNTXCloudVideoView *)root;
+        if ([userId isEqualToString:[cloudView getUserId]]) {
+            return cloudView;
+        }
+    }
+    
+    for (UIView *subview in root.subviews) {
+        RNTXCloudVideoView *cloudView = [self findViewByUserId:subview userId:userId];
+        if (cloudView) {
+            return cloudView;
+        }
+    }
+    return nil;
 }
 
 @end
