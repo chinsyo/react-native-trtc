@@ -16,8 +16,7 @@
 RCT_EXPORT_MODULE(RNTXCloudVideoView)
 RCT_EXPORT_VIEW_PROPERTY(userId, NSString)
 
-- (UIView *)view
-{
+- (UIView *)view {
     //创建组件实例
     RNTXCloudVideoView * viewInstance = [[RNTXCloudVideoView alloc] init];
     return viewInstance;
