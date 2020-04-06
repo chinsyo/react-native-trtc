@@ -622,69 +622,69 @@ RCT_EXPORT_METHOD(stopScreenRecord:(RCTPromiseResolveBlock)resolve rejecter:(RCT
 (float)     - getCurrentSpeakerDeviceVolume
 (int)     - setCurrentSpeakerDeviceVolume
  */
-RCT_EXPORT_METHOD(getMicDevicesList:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
-{
-    NSArray <TRTCMediaDeviceInfo*>*devices = [trtcCloud getMicDevicesList];
-    NSMutableArray *devicesList = [[NSMutableArray alloc] initWithCapacity:devices.count];
-    for (TRTCMediaDeviceInfo *device in devices) {
-        [devicesList addObject:@{
+// RCT_EXPORT_METHOD(getMicDevicesList:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+// {
+//     NSArray <TRTCMediaDeviceInfo*>*devices = [trtcCloud getMicDevicesList];
+//     NSMutableArray *devicesList = [[NSMutableArray alloc] initWithCapacity:devices.count];
+//     for (TRTCMediaDeviceInfo *device in devices) {
+//         [devicesList addObject:@{
             
-        }];
-    }
-    resolve(devicesList);
-}
+//         }];
+//     }
+//     resolve(devicesList);
+// }
 
-RCT_EXPORT_METHOD(getCurrentMicDevice:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    TRTCMediaDeviceInfo *device = [trtcCloud getCurrentMicDevice];
-    resolve(devive);
-}
+// RCT_EXPORT_METHOD(getCurrentMicDevice:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     TRTCMediaDeviceInfo *device = [trtcCloud getCurrentMicDevice];
+//     resolve(devive);
+// }
 
-RCT_EXPORT_METHOD(setCurrentMicDevice:deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    int result = [trtcCloud setCurrentMicDevice:deviceId];
-    resolve(@(result));
-}
+// RCT_EXPORT_METHOD(setCurrentMicDevice:deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     int result = [trtcCloud setCurrentMicDevice:deviceId];
+//     resolve(@(result));
+// }
 
-RCT_EXPORT_METHOD(getCurrentMicDeviceVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    float volume = [trtcCloud getCurrentMicDeviceVolume];
-    resolve(@(volume));
-}
+// RCT_EXPORT_METHOD(getCurrentMicDeviceVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     float volume = [trtcCloud getCurrentMicDeviceVolume];
+//     resolve(@(volume));
+// }
 
-RCT_EXPORT_METHOD(setCurrentMicDeviceVolume:(NSInteger)volume resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    [trtcCloud setCurrentMicDeviceVolume:volume];
-    resolve(@(1));
-}
+// RCT_EXPORT_METHOD(setCurrentMicDeviceVolume:(NSInteger)volume resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     [trtcCloud setCurrentMicDeviceVolume:volume];
+//     resolve(@(1));
+// }
 
-RCT_EXPORT_METHOD(getSpeakerDevicesList:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
-{
-    NSArray <TRTCMediaDeviceInfo*>*devices = [trtcCloud getSpeakerDevicesList];
-    NSMutableArray *devicesList = [[NSMutableArray alloc] initWithCapacity:devices.count];
-    for (TRTCMediaDeviceInfo *device in devices) {
-        [devicesList addObject:@{
+// RCT_EXPORT_METHOD(getSpeakerDevicesList:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+// {
+//     NSArray <TRTCMediaDeviceInfo*>*devices = [trtcCloud getSpeakerDevicesList];
+//     NSMutableArray *devicesList = [[NSMutableArray alloc] initWithCapacity:devices.count];
+//     for (TRTCMediaDeviceInfo *device in devices) {
+//         [devicesList addObject:@{
             
-        }];
-    }
-    resolve(devicesList);
-}
+//         }];
+//     }
+//     resolve(devicesList);
+// }
 
-RCT_EXPORT_METHOD(getCurrentSpeakerDevice:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    TRTCMediaDeviceInfo *device = [trtcCloud getCurrentSpeakerDevice];
-    resolve(devive);
-}
+// RCT_EXPORT_METHOD(getCurrentSpeakerDevice:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     TRTCMediaDeviceInfo *device = [trtcCloud getCurrentSpeakerDevice];
+//     resolve(devive);
+// }
 
-RCT_EXPORT_METHOD(setCurrentSpeakerDevice:deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    int result = [trtcCloud setCurrentSpeakerDevice:deviceId];
-    resolve(@(result));
-}
+// RCT_EXPORT_METHOD(setCurrentSpeakerDevice:deviceId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     int result = [trtcCloud setCurrentSpeakerDevice:deviceId];
+//     resolve(@(result));
+// }
 
-RCT_EXPORT_METHOD(getCurrentSpeakerDeviceVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    float volume = [trtcCloud getCurrentSpeakerDeviceVolume];
-    resolve(@(volume));
-}
+// RCT_EXPORT_METHOD(getCurrentSpeakerDeviceVolume:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     float volume = [trtcCloud getCurrentSpeakerDeviceVolume];
+//     resolve(@(volume));
+// }
 
-RCT_EXPORT_METHOD(setCurrentSpeakerDeviceVolume:(NSInteger)volume resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
-    [trtcCloud setCurrentSpeakerDeviceVolume:volume];
-    resolve(@(1));
-}
+// RCT_EXPORT_METHOD(setCurrentSpeakerDeviceVolume:(NSInteger)volume resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+//     [trtcCloud setCurrentSpeakerDeviceVolume:volume];
+//     resolve(@(1));
+// }
 
 
 #pragma mark 美颜滤镜相关接口函数
@@ -1082,7 +1082,7 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
     }];
 }
 
-- (void)onSendFirstLocalVideoFrame:(NSInteger)streamType  {
+- (void)onSendFirstLocalVideoFrame:(TRTCVideoStreamType)streamType  {
     [self sendEventWithName:@"onSendFirstLocalVideoFrame" body:@{
         @"streamType": @(streamType),
     }];
