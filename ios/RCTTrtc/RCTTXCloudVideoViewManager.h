@@ -1,6 +1,6 @@
 //
-//  RNTXCloudVideoViewManager.h
-//  RNTrtc
+//  RCTTXCloudVideoViewManager.h
+//  RCTTrtc
 //
 //  Created by 余保荣 on 2020/2/24.
 //  Copyright © 2020 Facebook. All rights reserved.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RNTXCloudVideoViewManager : RCTViewManager
+@interface RCTTXCloudVideoViewManager : RCTViewManager
 
 @end
 

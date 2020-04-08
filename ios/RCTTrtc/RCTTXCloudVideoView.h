@@ -1,6 +1,6 @@
 //
-//  RNTXCloudVideoView.h
-//  RNTrtc
+//  RCTTXCloudVideoView.h
+//  RCTTrtc
 //
 //  Created by 余保荣 on 2020/2/24.
 //  Copyright © 2020 Facebook. All rights reserved.
@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface RNTXCloudVideoView : UIView
+@interface RCTTXCloudVideoView : UIView
 
 - (void)setUserId:(NSString *)userId;
 - (NSString *)getUserId;

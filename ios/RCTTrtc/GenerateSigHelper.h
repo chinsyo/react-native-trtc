@@ -1,6 +1,6 @@
 //
 //  GenerateSigHelper.h
-//  RNTrtc
+//  RCTTrtc
 //
 //  Created by 余保荣 on 2020/2/25.
 //  Copyright © 2020 Facebook. All rights reserved.

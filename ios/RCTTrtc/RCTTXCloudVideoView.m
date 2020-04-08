@@ -1,27 +1,27 @@
 //
-//  RNTXCloudVideoView.m
-//  RNTrtc
+//  RCTTXCloudVideoView.m
+//  RCTTrtc
 //
 //  Created by 余保荣 on 2020/2/24.
 //  Copyright © 2020 Facebook. All rights reserved.
 //
 
-#import "RNTXCloudVideoView.h"
+#import "RCTTXCloudVideoView.h"
 
 #import <Foundation/Foundation.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDef.h>
 
-#import "RNTrtc.h"
+#import "RCTTrtc.h"
 
-@interface RNTXCloudVideoView()
+@interface RCTTXCloudVideoView()
 
 @property (nonatomic, strong, readonly) TRTCCloud *trtc;
 @property (nonatomic, strong) NSString *userId;
 
 @end
 
-@implementation RNTXCloudVideoView
+@implementation RCTTXCloudVideoView
 
 - (instancetype)init
 {
@@ -34,9 +34,9 @@
 
 - (void)start {
     if (self.trtc) {
-        if ([self.userId isEqualToString: [RNTrtc getSelfUserId]]) {
+        if ([self.userId isEqualToString: [RCTTrtc getSelfUserId]]) {
             [self.trtc setLocalViewFillMode:TRTCVideoFillMode_Fill];
-            [self.trtc startLocalPreview:[RNTrtc isFrontCamera] view:self];
+            [self.trtc startLocalPreview:[RCTTrtc isFrontCamera] view:self];
         } else {
             [self.trtc setRemoteViewFillMode:_userId mode:TRTCVideoFillMode_Fill];
             [self.trtc startRemoteView:_userId view:self];
@@ -46,7 +46,7 @@
 
 - (void)stop {
     if (self.trtc) {
-        if ([self.userId isEqualToString:[RNTrtc getSelfUserId] ]) {
+        if ([self.userId isEqualToString:[RCTTrtc getSelfUserId] ]) {
            // [_trtc stopLocalPreview ];
         } else {
             [self.trtc stopRemoteView:_userId ];

@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1612324224069A33003A87E3 /* RNTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RNTrtc.m */; platformFilter = ios; };
+		1612324224069A33003A87E3 /* RCTTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RCTTrtc.m */; platformFilter = ios; };
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; platformFilter = ios; };
-		2973227524398F5C0049A153 /* RNTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227224398F5C0049A153 /* RNTXCloudVideoView.m */; };
-		2973227624398F5C0049A153 /* RNTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227324398F5C0049A153 /* RNTXCloudVideoViewManager.m */; };
+		2973227524398F5C0049A153 /* RCTTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227224398F5C0049A153 /* RCTTXCloudVideoView.m */; };
+		2973227624398F5C0049A153 /* RCTTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227324398F5C0049A153 /* RCTTXCloudVideoViewManager.m */; };
 		29D62828243A253D0084D4F4 /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D62826243A253D0084D4F4 /* GenerateSigHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -28,16 +28,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libRNTrtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNTrtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1612324124069A32003A87E3 /* RNTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTrtc.m; sourceTree = "<group>"; };
+		134814201AA4EA6300B7C361 /* libRCTTrtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTTrtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1612324124069A32003A87E3 /* RCTTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTrtc.m; sourceTree = "<group>"; };
 		16F9163D24041F170096DC7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2973227124398F5C0049A153 /* RNTXCloudVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoView.h; sourceTree = "<group>"; };
-		2973227224398F5C0049A153 /* RNTXCloudVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoView.m; sourceTree = "<group>"; };
-		2973227324398F5C0049A153 /* RNTXCloudVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTXCloudVideoViewManager.m; sourceTree = "<group>"; };
-		2973227424398F5C0049A153 /* RNTXCloudVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTXCloudVideoViewManager.h; sourceTree = "<group>"; };
+		2973227124398F5C0049A153 /* RCTTXCloudVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTXCloudVideoView.h; sourceTree = "<group>"; };
+		2973227224398F5C0049A153 /* RCTTXCloudVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTXCloudVideoView.m; sourceTree = "<group>"; };
+		2973227324398F5C0049A153 /* RCTTXCloudVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTXCloudVideoViewManager.m; sourceTree = "<group>"; };
+		2973227424398F5C0049A153 /* RCTTXCloudVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTXCloudVideoViewManager.h; sourceTree = "<group>"; };
 		29D62826243A253D0084D4F4 /* GenerateSigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateSigHelper.m; sourceTree = "<group>"; };
 		29D62827243A253D0084D4F4 /* GenerateSigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateSigHelper.h; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RNTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTrtc.h; sourceTree = "<group>"; };
+		B3E7B5881CC2AC0600A0062D /* RCTTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTrtc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libRNTrtc.a */,
+				134814201AA4EA6300B7C361 /* libRCTTrtc.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,25 +68,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		29C32C96243D7C09004D5AF1 /* RNTrtc */ = {
+		29C32C96243D7C09004D5AF1 /* RCTTrtc */ = {
 			isa = PBXGroup;
 			children = (
 				29D62827243A253D0084D4F4 /* GenerateSigHelper.h */,
 				29D62826243A253D0084D4F4 /* GenerateSigHelper.m */,
-				2973227124398F5C0049A153 /* RNTXCloudVideoView.h */,
-				2973227224398F5C0049A153 /* RNTXCloudVideoView.m */,
-				2973227424398F5C0049A153 /* RNTXCloudVideoViewManager.h */,
-				2973227324398F5C0049A153 /* RNTXCloudVideoViewManager.m */,
-				B3E7B5881CC2AC0600A0062D /* RNTrtc.h */,
-				1612324124069A32003A87E3 /* RNTrtc.m */,
+				2973227124398F5C0049A153 /* RCTTXCloudVideoView.h */,
+				2973227224398F5C0049A153 /* RCTTXCloudVideoView.m */,
+				2973227424398F5C0049A153 /* RCTTXCloudVideoViewManager.h */,
+				2973227324398F5C0049A153 /* RCTTXCloudVideoViewManager.m */,
+				B3E7B5881CC2AC0600A0062D /* RCTTrtc.h */,
+				1612324124069A32003A87E3 /* RCTTrtc.m */,
 			);
-			path = RNTrtc;
+			path = RCTTrtc;
 			sourceTree = "<group>";
 		};
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
-				29C32C96243D7C09004D5AF1 /* RNTrtc */,
+				29C32C96243D7C09004D5AF1 /* RCTTrtc */,
 				134814211AA4EA7D00B7C361 /* Products */,
 				16F9162F240400730096DC7E /* Frameworks */,
 			);
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* RNTrtc */ = {
+		58B511DA1A9E6C8500147676 /* RCTTrtc */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNTrtc" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTTrtc" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -107,9 +107,9 @@
 			);
 			dependencies = (
 			);
-			name = RNTrtc;
+			name = RCTTrtc;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libRNTrtc.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libRCTTrtc.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -126,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNTrtc" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RCTTrtc" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -139,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* RNTrtc */,
+				58B511DA1A9E6C8500147676 /* RCTTrtc */,
 			);
 		};
 /* End PBXProject section */
@@ -150,9 +150,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				29D62828243A253D0084D4F4 /* GenerateSigHelper.m in Sources */,
-				2973227524398F5C0049A153 /* RNTXCloudVideoView.m in Sources */,
-				1612324224069A33003A87E3 /* RNTrtc.m in Sources */,
-				2973227624398F5C0049A153 /* RNTXCloudVideoViewManager.m in Sources */,
+				2973227524398F5C0049A153 /* RCTTXCloudVideoView.m in Sources */,
+				1612324224069A33003A87E3 /* RCTTrtc.m in Sources */,
+				2973227624398F5C0049A153 /* RCTTXCloudVideoViewManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +258,7 @@
 				);
 				MODULEMAP_FILE = "";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNTrtc;
+				PRODUCT_NAME = RCTTrtc;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
@@ -283,7 +283,7 @@
 				MODULEMAP_FILE = "";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = RNTrtc;
+				PRODUCT_NAME = RCTTrtc;
 				SKIP_INSTALL = YES;
 				VALID_ARCHS = "arm64 arm64e armv7 armv7s";
 			};
@@ -292,7 +292,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNTrtc" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RCTTrtc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -301,7 +301,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNTrtc" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTTrtc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

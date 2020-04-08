@@ -1,7 +1,7 @@
 
-#import "RNTrtc.h"
+#import "RCTTrtc.h"
 #import "GenerateSigHelper.h"
-#import "RNTXCloudVideoView.h"
+#import "RCTTXCloudVideoView.h"
 #import <TXLiteAVSDK_TRTC/TRTCCloud.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDef.h>
 #import <TXLiteAVSDK_TRTC/TRTCCloudDelegate.h>
@@ -11,7 +11,7 @@
 static BOOL mFrontCamera = true;
 static NSString *selfUserId;
 
-@interface RNTrtc() <TRTCCloudDelegate, TRTCLogDelegate, TRTCAudioFrameDelegate> {
+@interface RCTTrtc () <TRTCCloudDelegate, TRTCLogDelegate, TRTCAudioFrameDelegate> {
     TRTCCloud *trtcCloud;
     BOOL hasListeners;
     BOOL logListeners;
@@ -20,7 +20,7 @@ static NSString *selfUserId;
 @end
 
 
-@implementation RNTrtc
+@implementation RCTTrtc
 
 - (dispatch_queue_t)methodQueue
 {
@@ -38,7 +38,7 @@ RCT_EXPORT_MODULE()
 }
 
 + (instancetype)allocWithZone:(NSZone *)zone {
-    static RNTrtc *sharedInstance = nil;
+    static RCTTrtc *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [super allocWithZone:zone];
@@ -298,7 +298,7 @@ RCT_EXPORT_METHOD(startLocalPreview:(BOOL)frontCamera){
     mFrontCamera = frontCamera;
     id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
     UIView *rootView = appDelegate.window.rootViewController.view;
-    RNTXCloudVideoView *cloudView = [self findViewByUserId:rootView userId:selfUserId];
+    RCTTXCloudVideoView *cloudView = [self findViewByUserId:rootView userId:selfUserId];
     if (cloudView) {
         [trtcCloud startLocalPreview:frontCamera view:cloudView];
     }
@@ -321,7 +321,7 @@ RCT_EXPORT_METHOD(startRemoteView:(NSString *) userId)
     NSLog(@"startRemoteView");
     id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
     UIView *rootView = appDelegate.window.rootViewController.view;
-    RNTXCloudVideoView *cloudView = [self findViewByUserId:rootView userId:selfUserId];
+    RCTTXCloudVideoView *cloudView = [self findViewByUserId:rootView userId:selfUserId];
     if (cloudView) {
         [trtcCloud startRemoteView:userId view:cloudView];
     }
@@ -1279,16 +1279,16 @@ RCT_EXPORT_METHOD(setLogDirPath:(NSString *)dir)
 }
 
 #pragma mark -
-- (RNTXCloudVideoView *)findViewByUserId:(UIView *)root userId:(NSString *)userId {
-    if ([root isKindOfClass:[RNTXCloudVideoView class]]) {
-        RNTXCloudVideoView *cloudView = (RNTXCloudVideoView *)root;
+- (RCTTXCloudVideoView *)findViewByUserId:(UIView *)root userId:(NSString *)userId {
+    if ([root isKindOfClass:[RCTTXCloudVideoView class]]) {
+        RCTTXCloudVideoView *cloudView = (RCTTXCloudVideoView *)root;
         if ([userId isEqualToString:[cloudView getUserId]]) {
             return cloudView;
         }
     }
     
     for (UIView *subview in root.subviews) {
-        RNTXCloudVideoView *cloudView = [self findViewByUserId:subview userId:userId];
+        RCTTXCloudVideoView *cloudView = [self findViewByUserId:subview userId:userId];
         if (cloudView) {
             return cloudView;
         }

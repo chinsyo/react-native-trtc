@@ -3,7 +3,7 @@
 #import <React/RCTEventEmitter.h>
 
 
-@interface RNTrtc : RCTEventEmitter <RCTBridgeModule>
+@interface RCTTrtc : RCTEventEmitter <RCTBridgeModule>
 
 + (BOOL)isFrontCamera;
 + (NSString *)getSelfUserId;
