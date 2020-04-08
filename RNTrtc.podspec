@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.author       = package['author']
   s.platform     = :ios, "7.0"
   s.source       = { :git => "https://github.com/chinsyo/react-native-trtc.git", :tag => "v#{s.version}" }
-  s.source_files = "ios/**.{h,m}"
-  s.public_header_files = "**/*.h"
+  s.source_files = "ios/**/*.{h,m}"
+  s.public_header_files = "ios/**/*.h"
   s.requires_arc = true
 
   s.library      = "z"
