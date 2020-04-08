@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1612324224069A33003A87E3 /* RCTTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 1612324124069A32003A87E3 /* RCTTrtc.m */; platformFilter = ios; };
 		16F9163E24041F180096DC7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F9163D24041F170096DC7E /* UIKit.framework */; platformFilter = ios; };
-		2973227524398F5C0049A153 /* RCTTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227224398F5C0049A153 /* RCTTXCloudVideoView.m */; };
-		2973227624398F5C0049A153 /* RCTTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2973227324398F5C0049A153 /* RCTTXCloudVideoViewManager.m */; };
-		29D62828243A253D0084D4F4 /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 29D62826243A253D0084D4F4 /* GenerateSigHelper.m */; };
+		29A1D1CC243DE35000A35C22 /* GenerateSigHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A1D1C4243DE35000A35C22 /* GenerateSigHelper.m */; };
+		29A1D1CD243DE35000A35C22 /* RCTTXCloudVideoViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A1D1C6243DE35000A35C22 /* RCTTXCloudVideoViewManager.m */; };
+		29A1D1CE243DE35000A35C22 /* RCTTrtc.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A1D1C7243DE35000A35C22 /* RCTTrtc.m */; };
+		29A1D1CF243DE35000A35C22 /* RCTTXCloudVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29A1D1C8243DE35000A35C22 /* RCTTXCloudVideoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,15 +29,15 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRCTTrtc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTTrtc.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		1612324124069A32003A87E3 /* RCTTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTrtc.m; sourceTree = "<group>"; };
 		16F9163D24041F170096DC7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2973227124398F5C0049A153 /* RCTTXCloudVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTXCloudVideoView.h; sourceTree = "<group>"; };
-		2973227224398F5C0049A153 /* RCTTXCloudVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTXCloudVideoView.m; sourceTree = "<group>"; };
-		2973227324398F5C0049A153 /* RCTTXCloudVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTXCloudVideoViewManager.m; sourceTree = "<group>"; };
-		2973227424398F5C0049A153 /* RCTTXCloudVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTXCloudVideoViewManager.h; sourceTree = "<group>"; };
-		29D62826243A253D0084D4F4 /* GenerateSigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateSigHelper.m; sourceTree = "<group>"; };
-		29D62827243A253D0084D4F4 /* GenerateSigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateSigHelper.h; sourceTree = "<group>"; };
-		B3E7B5881CC2AC0600A0062D /* RCTTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTrtc.h; sourceTree = "<group>"; };
+		29A1D1C4243DE35000A35C22 /* GenerateSigHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenerateSigHelper.m; sourceTree = "<group>"; };
+		29A1D1C5243DE35000A35C22 /* GenerateSigHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenerateSigHelper.h; sourceTree = "<group>"; };
+		29A1D1C6243DE35000A35C22 /* RCTTXCloudVideoViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTXCloudVideoViewManager.m; sourceTree = "<group>"; };
+		29A1D1C7243DE35000A35C22 /* RCTTrtc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTrtc.m; sourceTree = "<group>"; };
+		29A1D1C8243DE35000A35C22 /* RCTTXCloudVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTXCloudVideoView.m; sourceTree = "<group>"; };
+		29A1D1C9243DE35000A35C22 /* RCTTrtc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTrtc.h; sourceTree = "<group>"; };
+		29A1D1CA243DE35000A35C22 /* RCTTXCloudVideoViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTXCloudVideoViewManager.h; sourceTree = "<group>"; };
+		29A1D1CB243DE35000A35C22 /* RCTTXCloudVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTTXCloudVideoView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,14 +71,14 @@
 		29C32C96243D7C09004D5AF1 /* RCTTrtc */ = {
 			isa = PBXGroup;
 			children = (
-				29D62827243A253D0084D4F4 /* GenerateSigHelper.h */,
-				29D62826243A253D0084D4F4 /* GenerateSigHelper.m */,
-				2973227124398F5C0049A153 /* RCTTXCloudVideoView.h */,
-				2973227224398F5C0049A153 /* RCTTXCloudVideoView.m */,
-				2973227424398F5C0049A153 /* RCTTXCloudVideoViewManager.h */,
-				2973227324398F5C0049A153 /* RCTTXCloudVideoViewManager.m */,
-				B3E7B5881CC2AC0600A0062D /* RCTTrtc.h */,
-				1612324124069A32003A87E3 /* RCTTrtc.m */,
+				29A1D1C5243DE35000A35C22 /* GenerateSigHelper.h */,
+				29A1D1C4243DE35000A35C22 /* GenerateSigHelper.m */,
+				29A1D1C9243DE35000A35C22 /* RCTTrtc.h */,
+				29A1D1C7243DE35000A35C22 /* RCTTrtc.m */,
+				29A1D1CB243DE35000A35C22 /* RCTTXCloudVideoView.h */,
+				29A1D1C8243DE35000A35C22 /* RCTTXCloudVideoView.m */,
+				29A1D1CA243DE35000A35C22 /* RCTTXCloudVideoViewManager.h */,
+				29A1D1C6243DE35000A35C22 /* RCTTXCloudVideoViewManager.m */,
 			);
 			path = RCTTrtc;
 			sourceTree = "<group>";
@@ -149,10 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29D62828243A253D0084D4F4 /* GenerateSigHelper.m in Sources */,
-				2973227524398F5C0049A153 /* RCTTXCloudVideoView.m in Sources */,
-				1612324224069A33003A87E3 /* RCTTrtc.m in Sources */,
-				2973227624398F5C0049A153 /* RCTTXCloudVideoViewManager.m in Sources */,
+				29A1D1CE243DE35000A35C22 /* RCTTrtc.m in Sources */,
+				29A1D1CD243DE35000A35C22 /* RCTTXCloudVideoViewManager.m in Sources */,
+				29A1D1CF243DE35000A35C22 /* RCTTXCloudVideoView.m in Sources */,
+				29A1D1CC243DE35000A35C22 /* GenerateSigHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

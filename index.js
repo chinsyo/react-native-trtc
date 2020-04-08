@@ -3,8 +3,11 @@ import { NativeModules, NativeEventEmitter, requireNativeComponent } from 'react
 import * as React from 'react';
 
 var RCTTXCloudVideoView = requireNativeComponent("RCTTXCloudVideoView");
+console.log('!!!RCTTXCloudVideoView', RCTTXCloudVideoView)
 const RNModule = NativeModules.RCTTrtc;
+console.log('!!!RNModule', RNModule)
 const eventEmitter = new NativeEventEmitter(RNModule);
+console.log('!!!eventEmitter', eventEmitter)
 
 class TXCloudVideoView extends React.Component {
     constructor(props) {
