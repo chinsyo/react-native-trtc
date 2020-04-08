@@ -4,9 +4,10 @@ import * as React from 'react';
 
 var RCTTXCloudVideoView = requireNativeComponent("RCTTXCloudVideoView");
 console.log('!!!RCTTXCloudVideoView', RCTTXCloudVideoView)
-const RNModule = NativeModules.RCTTrtc;
-console.log('!!!RNModule', RNModule)
-const eventEmitter = new NativeEventEmitter(RNModule);
+// const RNModule = NativeModules.RCTTrtc;
+const { Trtc } = NativeModules;
+console.log('!!!Trtc', Trtc)
+const eventEmitter = new NativeEventEmitter(Trtc);
 console.log('!!!eventEmitter', eventEmitter)
 
 class TXCloudVideoView extends React.Component {
@@ -21,256 +22,256 @@ class TXCloudVideoView extends React.Component {
 
 export default {
     setLogEnabled(enabled) {
-        RNModule.setLogEnabled(enabled);
+        Trtc.setLogEnabled(enabled);
     },
     creatUserSig(sdkAppId, secretKey, userId) {
-        return RNModule.creatUserSig(sdkAppId, secretKey, userId)
+        return Trtc.creatUserSig(sdkAppId, secretKey, userId)
     },
     enableScreenOn() {
-        RNModule.enableScreenOn()
+        Trtc.enableScreenOn()
     },
     disableScreenOn() {
-        RNModule.disableScreenOn()
+        Trtc.disableScreenOn()
     },
     sharedInstance() {
-        return RNModule.sharedInstance()
+        return Trtc.sharedInstance()
     },
     destroySharedInstance() {
-        RNModule.destroySharedInstance()
+        Trtc.destroySharedInstance()
     },
 
     enterRoom(data, scene) {
         data.privateMapKey = data.privateMapKey || "";
         data.businessInfo = data.businessInfo || "";
-        RNModule.enterRoom(data, scene)
+        Trtc.enterRoom(data, scene)
     },
     exitRoom() {
-        RNModule.exitRoom()
+        Trtc.exitRoom()
     },
     switchRole(role) {
-        RNModule.switchRole(role)
+        Trtc.switchRole(role)
     },
     connectOtherRoom(param) {
-        RNModule.connectOtherRoom(param)
+        Trtc.connectOtherRoom(param)
     },
 
     disconnectOtherRoom() {
-        RNModule.disconnectOtherRoom()
+        Trtc.disconnectOtherRoom()
     },
 
     setDefaultStreamRecvMode(autoRecvAudio, autoRecvVideo) {
-        RNModule.setDefaultStreamRecvMode(autoRecvAudio, autoRecvVideo)
+        Trtc.setDefaultStreamRecvMode(autoRecvAudio, autoRecvVideo)
     },
 
     startPublishing(streamId, streamType) {
-        RNModule.startPublishing(streamId, streamType)
+        Trtc.startPublishing(streamId, streamType)
     },
 
     stopPublishing() {
-        RNModule.stopPublishing()
+        Trtc.stopPublishing()
     },
 
     startPublishCDNStream(param) {
-        RNModule.startPublishCDNStream(param)
+        Trtc.startPublishCDNStream(param)
     },
 
     stopPublishCDNStream() {
-        RNModule.stopPublishCDNStream()
+        Trtc.stopPublishCDNStream()
     },
 
     setMixTranscodingConfig(config) {
-        RNModule.setMixTranscodingConfig(config)
+        Trtc.setMixTranscodingConfig(config)
     },
     startLocalPreview(frontCamera) {
-        RNModule.startLocalPreview(frontCamera)
+        Trtc.startLocalPreview(frontCamera)
     },
     stopLocalPreview() {
-        RNModule.stopLocalPreview()
+        Trtc.stopLocalPreview()
     },
 
     muteLocalVideo(mute) {
-        RNModule.muteLocalVideo(mute)
+        Trtc.muteLocalVideo(mute)
     },
 
     startRemoteView(userId) {
-        RNModule.startRemoteView(userId)
+        Trtc.startRemoteView(userId)
     },
 
     stopRemoteView(userId) {
-        RNModule.stopRemoteView(userId)
+        Trtc.stopRemoteView(userId)
     },
 
     stopAllRemoteView() {
-        RNModule.stopAllRemoteView()
+        Trtc.stopAllRemoteView()
     },
 
     muteRemoteVideoStream(userId, mute) {
-        RNModule.muteRemoteVideoStream(userId, mute)
+        Trtc.muteRemoteVideoStream(userId, mute)
     },
 
     muteAllRemoteVideoStreams(mute) {
-        RNModule.muteAllRemoteVideoStreams(mute)
+        Trtc.muteAllRemoteVideoStreams(mute)
     },
 
     setVideoEncoderParam(data) {
-        RNModule.setVideoEncoderParam(data)
+        Trtc.setVideoEncoderParam(data)
     },
     setNetworkQosParam(data) {
-        RNModule.setNetworkQosParam(data)
+        Trtc.setNetworkQosParam(data)
     },
 
     setLocalViewFillMode(mode) {
-        RNModule.setLocalViewFillMode(mode)
+        Trtc.setLocalViewFillMode(mode)
     },
 
     setRemoteViewFillMode(userId, mode) {
-        RNModule.setRemoteViewFillMode(userId, mode)
+        Trtc.setRemoteViewFillMode(userId, mode)
     },
 
     setLocalViewRotation(rotation) {
-        RNModule.setLocalViewRotation(rotation)
+        Trtc.setLocalViewRotation(rotation)
     },
 
     setRemoteViewRotation(userId, rotation) {
-        RNModule.setRemoteViewRotation(userId, rotation)
+        Trtc.setRemoteViewRotation(userId, rotation)
     },
 
     setVideoEncoderRotation(rotation) {
-        RNModule.setVideoEncoderRotation(rotation)
+        Trtc.setVideoEncoderRotation(rotation)
     },
 
     setLocalViewMirror(mirrorType) {
-        RNModule.setLocalViewMirror(mirrorType)
+        Trtc.setLocalViewMirror(mirrorType)
     },
 
     setVideoEncoderMirror(mirror) {
-        RNModule.setVideoEncoderMirror(mirror)
+        Trtc.setVideoEncoderMirror(mirror)
     },
 
     setGSensorMode(mode) {
-        RNModule.setGSensorMode(mode)
+        Trtc.setGSensorMode(mode)
     },
 
     enableEncSmallVideoStream(enable, smallVideoEncParam) {
-        return RNModule.enableEncSmallVideoStream(enable, smallVideoEncParam)
+        return Trtc.enableEncSmallVideoStream(enable, smallVideoEncParam)
     },
 
     setRemoteVideoStreamType(userId, streamType) {
-        return RNModule.setRemoteVideoStreamType(userId, streamType)
+        return Trtc.setRemoteVideoStreamType(userId, streamType)
     },
 
     setPriorRemoteVideoStreamType(streamType) {
-        return RNModule.setPriorRemoteVideoStreamType(streamType)
+        return Trtc.setPriorRemoteVideoStreamType(streamType)
     },
 
     snapshotVideo(userId, streamType) {
-        return RNModule.snapshotVideo(userId, streamType)
+        return Trtc.snapshotVideo(userId, streamType)
     },
 
     startLocalAudio() {
-        RNModule.startLocalAudio()
+        Trtc.startLocalAudio()
     },
     stopLocalAudio() {
-        RNModule.stopLocalAudio()
+        Trtc.stopLocalAudio()
     },
 
     muteLocalAudio(mute) {
-        RNModule.muteLocalAudio(mute)
+        Trtc.muteLocalAudio(mute)
     },
     muteRemoteAudio(userId, mute) {
-        RNModule.muteRemoteAudio(userId, mute)
+        Trtc.muteRemoteAudio(userId, mute)
     },
     muteAllRemoteAudio(mute) {
-        RNModule.muteAllRemoteAudio(mute)
+        Trtc.muteAllRemoteAudio(mute)
     },
 
     setRemoteAudioVolume(userId, volume) {
-        RNModule.setRemoteAudioVolume(userId, volume)
+        Trtc.setRemoteAudioVolume(userId, volume)
     },
 
     setAudioCaptureVolume(volume) {
-        RNModule.setAudioCaptureVolume(volume)
+        Trtc.setAudioCaptureVolume(volume)
     },
 
     getAudioCaptureVolume() {
-        return RNModule.getAudioCaptureVolume()
+        return Trtc.getAudioCaptureVolume()
     },
 
     setAudioPlayoutVolume(volume) {
-        RNModule.setAudioPlayoutVolume(volume)
+        Trtc.setAudioPlayoutVolume(volume)
     },
 
     getAudioPlayoutVolume() {
-        return RNModule.getAudioPlayoutVolume()
+        return Trtc.getAudioPlayoutVolume()
     },
 
     enableAudioVolumeEvaluation(intervalMs) {
-        RNModule.enableAudioVolumeEvaluation(intervalMs)
+        Trtc.enableAudioVolumeEvaluation(intervalMs)
     },
 
     startAudioRecording(param) {
-        return RNModule.startAudioRecording(param)
+        return Trtc.startAudioRecording(param)
     },
 
     stopAudioRecording() {
-        RNModule.stopAudioRecording()
+        Trtc.stopAudioRecording()
     },
 
     setSystemVolumeType(type) {
-        RNModule.setSystemVolumeType(type)
+        Trtc.setSystemVolumeType(type)
     },
 
     enableAudioEarMonitoring(enable) {
-        RNModule.enableAudioEarMonitoring(enable)
+        Trtc.enableAudioEarMonitoring(enable)
     },
 
     switchCamera() {
-        RNModule.switchCamera()
+        Trtc.switchCamera()
     },
     isCameraZoomSupported() {
-        return RNModule.isCameraZoomSupported()
+        return Trtc.isCameraZoomSupported()
     },
 
     setZoom(distance) {
-        RNModule.setZoom(distance)
+        Trtc.setZoom(distance)
     },
 
     isCameraTorchSupported() {
-        return RNModule.isCameraTorchSupported()
+        return Trtc.isCameraTorchSupported()
     },
 
     enableTorch(enable) {
-        return RNModule.enableTorch(enable)
+        return Trtc.enableTorch(enable)
     },
 
     isCameraFocusPositionInPreviewSupported() {
-        return RNModule.isCameraFocusPositionInPreviewSupported()
+        return Trtc.isCameraFocusPositionInPreviewSupported()
     },
 
     setFocusPosition(x, y) {
-        RNModule.setFocusPosition(x, y)
+        Trtc.setFocusPosition(x, y)
     },
 
     isCameraAutoFocusFaceModeSupported() {
-        return RNModule.isCameraAutoFocusFaceModeSupported()
+        return Trtc.isCameraAutoFocusFaceModeSupported()
     },
 
     startScreenRecord() {
-        RNModule.startScreenRecord()
+        Trtc.startScreenRecord()
     },
     stopScreenRecord() {
-        RNModule.stopScreenRecord()
+        Trtc.stopScreenRecord()
     },
 
     getSDKVersion() {
-        return RNModule.getSDKVersion();
+        return Trtc.getSDKVersion();
     },
     /*
      * setAudioRoute
      * int  0 Speaker 1 Earpiece
      */
     setAudioRoute(router) {
-        RNModule.setAudioRoute(router)
+        Trtc.setAudioRoute(router)
     },
 
     addListener(eventName, handler) {
