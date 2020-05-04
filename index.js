@@ -35,7 +35,9 @@ export default {
     destroySharedInstance() {
         Trtc.destroySharedInstance()
     },
-
+    /**
+     * 房间相关
+     */
     enterRoom(data, scene) {
         data.privateMapKey = data.privateMapKey || "";
         data.businessInfo = data.businessInfo || "";
@@ -50,127 +52,108 @@ export default {
     connectOtherRoom(param) {
         Trtc.connectOtherRoom(param)
     },
-
     disconnectOtherRoom() {
         Trtc.disconnectOtherRoom()
     },
-
     setDefaultStreamRecvMode(autoRecvAudio, autoRecvVideo) {
         Trtc.setDefaultStreamRecvMode(autoRecvAudio, autoRecvVideo)
     },
-
+    /**
+     * CDN相关接口函数
+     */
     startPublishing(streamId, streamType) {
         Trtc.startPublishing(streamId, streamType)
     },
-
     stopPublishing() {
         Trtc.stopPublishing()
     },
-
     startPublishCDNStream(param) {
         Trtc.startPublishCDNStream(param)
     },
-
     stopPublishCDNStream() {
         Trtc.stopPublishCDNStream()
     },
-
     setMixTranscodingConfig(config) {
         Trtc.setMixTranscodingConfig(config)
     },
+    /**
+     * 视频相关接口
+     */
     startLocalPreview(frontCamera) {
         Trtc.startLocalPreview(frontCamera)
     },
     stopLocalPreview() {
         Trtc.stopLocalPreview()
     },
-
     muteLocalVideo(mute) {
         Trtc.muteLocalVideo(mute)
     },
-
     startRemoteView(userId) {
         Trtc.startRemoteView(userId)
     },
-
     stopRemoteView(userId) {
         Trtc.stopRemoteView(userId)
     },
-
     stopAllRemoteView() {
         Trtc.stopAllRemoteView()
     },
-
     muteRemoteVideoStream(userId, mute) {
         Trtc.muteRemoteVideoStream(userId, mute)
     },
-
     muteAllRemoteVideoStreams(mute) {
         Trtc.muteAllRemoteVideoStreams(mute)
     },
-
     setVideoEncoderParam(data) {
         Trtc.setVideoEncoderParam(data)
     },
     setNetworkQosParam(data) {
         Trtc.setNetworkQosParam(data)
     },
-
     setLocalViewFillMode(mode) {
         Trtc.setLocalViewFillMode(mode)
     },
-
     setRemoteViewFillMode(userId, mode) {
         Trtc.setRemoteViewFillMode(userId, mode)
     },
-
     setLocalViewRotation(rotation) {
         Trtc.setLocalViewRotation(rotation)
     },
-
     setRemoteViewRotation(userId, rotation) {
         Trtc.setRemoteViewRotation(userId, rotation)
     },
-
     setVideoEncoderRotation(rotation) {
         Trtc.setVideoEncoderRotation(rotation)
     },
-
     setLocalViewMirror(mirrorType) {
         Trtc.setLocalViewMirror(mirrorType)
     },
-
     setVideoEncoderMirror(mirror) {
         Trtc.setVideoEncoderMirror(mirror)
     },
-
     setGSensorMode(mode) {
         Trtc.setGSensorMode(mode)
     },
-
     enableEncSmallVideoStream(enable, smallVideoEncParam) {
         return Trtc.enableEncSmallVideoStream(enable, smallVideoEncParam)
     },
-
     setRemoteVideoStreamType(userId, streamType) {
         return Trtc.setRemoteVideoStreamType(userId, streamType)
     },
-
     setPriorRemoteVideoStreamType(streamType) {
         return Trtc.setPriorRemoteVideoStreamType(streamType)
     },
-
     snapshotVideo(userId, streamType) {
         return Trtc.snapshotVideo(userId, streamType)
     },
-
+    /**
+     * 音频相关接口
+     */
     startLocalAudio() {
         Trtc.startLocalAudio()
     },
     stopLocalAudio() {
         Trtc.stopLocalAudio()
     },
-
     muteLocalAudio(mute) {
         Trtc.muteLocalAudio(mute)
     },
@@ -180,85 +163,69 @@ export default {
     muteAllRemoteAudio(mute) {
         Trtc.muteAllRemoteAudio(mute)
     },
-
     setRemoteAudioVolume(userId, volume) {
         Trtc.setRemoteAudioVolume(userId, volume)
     },
-
     setAudioCaptureVolume(volume) {
         Trtc.setAudioCaptureVolume(volume)
     },
-
     getAudioCaptureVolume() {
         return Trtc.getAudioCaptureVolume()
     },
-
     setAudioPlayoutVolume(volume) {
         Trtc.setAudioPlayoutVolume(volume)
     },
-
     getAudioPlayoutVolume() {
         return Trtc.getAudioPlayoutVolume()
     },
-
     enableAudioVolumeEvaluation(intervalMs) {
         Trtc.enableAudioVolumeEvaluation(intervalMs)
     },
-
     startAudioRecording(param) {
         return Trtc.startAudioRecording(param)
     },
-
     stopAudioRecording() {
         Trtc.stopAudioRecording()
     },
-
     setSystemVolumeType(type) {
         Trtc.setSystemVolumeType(type)
     },
-
     enableAudioEarMonitoring(enable) {
         Trtc.enableAudioEarMonitoring(enable)
     },
-
+    /**
+     * 摄像头相关接口函数
+     */
     switchCamera() {
         Trtc.switchCamera()
     },
     isCameraZoomSupported() {
         return Trtc.isCameraZoomSupported()
     },
-
     setZoom(distance) {
         Trtc.setZoom(distance)
     },
-
     isCameraTorchSupported() {
         return Trtc.isCameraTorchSupported()
     },
-
     enableTorch(enable) {
         return Trtc.enableTorch(enable)
     },
-
     isCameraFocusPositionInPreviewSupported() {
         return Trtc.isCameraFocusPositionInPreviewSupported()
     },
-
     setFocusPosition(x, y) {
         Trtc.setFocusPosition(x, y)
     },
-
     isCameraAutoFocusFaceModeSupported() {
         return Trtc.isCameraAutoFocusFaceModeSupported()
     },
-
     startScreenRecord() {
         Trtc.startScreenRecord()
     },
     stopScreenRecord() {
         Trtc.stopScreenRecord()
     },
-
     getSDKVersion() {
         return Trtc.getSDKVersion();
     },
@@ -269,7 +236,6 @@ export default {
     setAudioRoute(router) {
         Trtc.setAudioRoute(router)
     },
-
     addListener(eventName, handler) {
         if (!eventName || !handler) return;
         return eventEmitter.addListener(eventName, handler)
